@@ -5,26 +5,24 @@
     <title>Bestellsystem</title>
 </h:head>
 <h:body>
-    <h:outputLabel>Gesamtübersicht</h:outputLabel><br/>
+    <h:outputLabel>Produktbestellung</h:outputLabel><br/>
     <h:form>
-        <h:commandButton value="Gesamtübersicht"/>
-        <h:commandButton value="Bestellung" action="Views/bestellung.xhtml"/>
+        <h:commandButton value="Gesamtübersicht" action="/index.xhtml"/>
+        <h:commandButton value="Bestellung" />
     </h:form>
+
     <h:form>
-        <h:outputLabel value="neues Produkt: " />
-        <h:inputText value="#{produkt.name}" /><br/>
+        <h:outputLabel value="Kunde: "/>
+        <h:inputText value="#{kunde}"/><br/>
         
-        <h:outputLabel value="Anzahl: " />
-        <h:inputText value="#{produkt.count}" /><br/>
-        <h:commandButton value="Produkt anbieten"/><br/>
-    </h:form>
-    <h:form>
-        <h:outputLabel value="vorhandene Produkte: "/>
         <ui:repeat var="c" value="#{form.getProdukt}">
             <br/>
             <td>#{c.text}</td><br/>
-            
+            <td><h:button value="Löschen"/></td><br/>
         </ui:repeat>
+        
+        <h:commandButton value="weiter Eingabezeile"/><br/><br/>
+        <h:commandButton value="Bestellung prüfen"/>
     </h:form>
     
 </h:body>
