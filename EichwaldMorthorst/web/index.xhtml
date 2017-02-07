@@ -6,7 +6,9 @@
 </h:head>
 <h:body>
     <h1>Neue Produkte zum Verkauf anlegen</h1><br/>
-    <h:commandButton value="Bestellung"/>
+    <h:form>
+        <h:commandButton value="Bestellung"/>
+    </h:form>
     <h:form>
         <h:outputText value="neues Produkt:" />
         <h:inputText value="#{produkt.name}" />
