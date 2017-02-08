@@ -13,18 +13,18 @@
     </h:form>
     <h:form>
         <div>
-        <h:outputLabel value="neues Produkt: " />
+        <h:outputLabel value="Neues Produkt: " />
         <h:inputText value="#{vm.name}" /><br/>
         </div>
-        <h:outputLabel value="Anzahl:        " />
-        <h:inputText value="#{vm.anzahl}" class="bla"/><br/>
+        <h:outputLabel value="Anzahl: " />
+        <h:inputText value="#{vm.anzahl}" /><br/>
         
         <h:commandButton class="button" value="Produkt anbieten" action="#{vm.newProdukt(vm.name, vm.anzahl)}"/><br/><br/>
     </h:form>
     <h:form>
         <h:outputLabel value="vorhandene Produkte: "/><br/>
         
-        <table frame="border" rules="all" cellpadding="10" cellspacing="5">
+        <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Name</th> <th>Bestand</th></tr>
             <!-- Probeweise Kartoffel -->
             <tr><td>1</td> <td>Kartoffel</td> <td>8</td></tr>
