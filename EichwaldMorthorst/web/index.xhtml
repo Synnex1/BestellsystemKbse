@@ -8,14 +8,14 @@
 <h:body>
     <h:outputLabel class="ueberschrift">Gesamtübersicht</h:outputLabel><br/>
     <h:form>
-        <h:commandButton class="button" value="Gesamtübersicht"/>
-        <h:commandButton class="button" value="Bestellung" action="Views/bestellung.xhtml"/>
+        <h:commandButton class="buttonNavigation" value="Gesamtübersicht"/>
+        <h:commandButton class="buttonNavigation" value="Bestellung" action="Views/bestellung.xhtml"/><br/><br/><br/>
     </h:form>
     <h:form>
-        <div>
+        
         <h:outputLabel value="Neues Produkt: " />
         <h:inputText value="#{vm.name}" /><br/>
-        </div>
+        
         <h:outputLabel value="Anzahl: " />
         <h:inputText value="#{vm.anzahl}" /><br/>
         

@@ -37,6 +37,26 @@ table {
     transition-duration: 0.3s;
 }
 
+.buttonNavigation {
+    border-right: 2px;
+    border-left: 2px;
+    border-color: blue;
+    background-color: white;
+    margin-bottom: 10px;
+    font-size: 15px;
+    float: left;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.buttonNavigation:hover {
+    color: blue;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
 .deleteButton {
     background: url(./deleteButton.png) no-repeat;
     background-size: 100%;
