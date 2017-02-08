@@ -12,11 +12,12 @@
     </h:form>
     <h:form>
         <h:outputLabel value="neues Produkt: " />
-        <h:inputText value="#{produkt.name}" /><br/>
+        <h:inputText value="#{vm.name}" /><br/>
         
         <h:outputLabel value="Anzahl: " />
-        <h:inputText value="#{produkt.count}" /><br/>
-        <h:commandButton value="Produkt anbieten"/><br/>
+        <h:inputText value="#{vm.anzahl}" /><br/>
+        
+        <h:commandButton value="Produkt anbieten" action="#{vm.newProdukt(vm.name, vm.anzahl)}"/><br/>
     </h:form>
     <h:form>
         <h:outputLabel value="vorhandene Produkte: "/>
@@ -28,7 +29,8 @@
             <tr><th>id</th> <th>name</th></tr>
         </h:dataTable>
         <table>
-            <tr><th>id</th> <th>name</th></tr>
+            <tr><th>id</th> <th>name</th> <th>im Bestand</th></tr>
+            <tr><td>1</td> <td>Kartoffel</td> <td>8</td></tr>
         </table>
     </h:form>
     
