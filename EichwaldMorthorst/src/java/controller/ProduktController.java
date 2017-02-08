@@ -22,4 +22,8 @@ public class ProduktController {
         }
         return instance;
     }
+    
+    public void newProdukt(String name, int anzahl) {
+        
+    }
 }
