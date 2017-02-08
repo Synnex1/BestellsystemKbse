@@ -5,13 +5,33 @@
     <title>Bestellsystem</title>
 </h:head>
 <h:body>
-    <h1>Neue Produkte zum Verkauf anlegen</h1><br/>
+    <h:outputLabel>Gesamtübersicht</h:outputLabel><br/>
     <h:form>
-        <h:commandButton value="Bestellung"/>
+        <h:commandButton value="Gesamtübersicht"/>
+        <h:commandButton value="Bestellung" action="Views/bestellung.xhtml"/>
     </h:form>
     <h:form>
-        <h:outputText value="neues Produkt:" />
-        <h:inputText value="#{produkt.name}" />
+        <h:outputLabel value="neues Produkt: " />
+        <h:inputText value="#{vm.name}" /><br/>
+        
+        <h:outputLabel value="Anzahl: " />
+        <h:inputText value="#{vm.anzahl}" /><br/>
+        
+        <h:commandButton value="Produkt anbieten" action="#{vm.newProdukt(vm.name, vm.anzahl)}"/><br/>
+    </h:form>
+    <h:form>
+        <h:outputLabel value="vorhandene Produkte: "/>
+        <ui:repeat var="c" value="#{form.getProdukt}">
+            <br/>
+            <td>#{c.text}</td><br/>
+        </ui:repeat>
+        <h:dataTable >
+            <tr><th>id</th> <th>name</th></tr>
+        </h:dataTable>
+        <table>
+            <tr><th>id</th> <th>name</th> <th>im Bestand</th></tr>
+            <tr><td>1</td> <td>Kartoffel</td> <td>8</td></tr>
+        </table>
     </h:form>
     
 </h:body>
