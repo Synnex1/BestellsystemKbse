@@ -5,6 +5,8 @@
  */
 package ejb;
 
+import entity.Produkt;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -17,5 +19,13 @@ import javax.persistence.EntityManager;
 public class Persistence {
     @Inject
     private EntityManager em;
+    
+    public void persist(Object object) {
+        em.persist(object);
+    }
+    
+    public List<Produkt> getAllProdukt() {
+        return em.createNamedQuery("Produkt.findAll", Produkt.class).getResultList();
+    }
     
 }
