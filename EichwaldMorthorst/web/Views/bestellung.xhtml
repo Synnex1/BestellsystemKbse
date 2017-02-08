@@ -16,13 +16,12 @@
         <h:outputLabel value="Kunde: "/>
         <h:inputText value="#{kunde}"/><br/>
         
-        <ui:repeat var="c" value="#{vm.getAllProdukt()}">
-            <br/>
-            <td>#{c.name}</td><br/>
-            <td><h:button class="button" value="Löschen"/></td><br/>
-        </ui:repeat>
+        <table rules="rows" cellpadding="10" cellspacing="5">
+            <tr><th>id</th> <th>Anzahl</th> <th></th> <th>Kommentar</th></tr>
+            <tr><td><h:inputText/></td> <td><h:inputText/></td> <td><h:commandButton class="deleteButton"/></td> <td><h:outputLabel/></td></tr>
+        </table>
         
-        <h:commandButton class="button" value="weiter Eingabezeile"/><br/><br/>
+        <h:commandButton class="addButton"/><br/><br/>
         
         <h:commandButton class="button" value="Bestellung prüfen"/>
     </h:form>

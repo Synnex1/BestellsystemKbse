@@ -37,6 +37,32 @@ table {
     transition-duration: 0.3s;
 }
 
+.deleteButton {
+    background: url(./deleteButton.png) no-repeat;
+    background-size: 100%;
+    border: none;
+    height: 43px;
+    width: 43px;
+}
+
+.deleteButton:hover {
+    background: url(./deleteButtonActive.png) no-repeat;
+    background-size: 100%;
+}
+
+.addButton {
+    background: url(./addButton.png) no-repeat;
+    background-size: 100%;
+    border: none;
+    height: 43px;
+    width: 43px;
+}
+
+.addButton:hover {
+    background: url(./addButtonActive.png) no-repeat;
+    background-size: 100%;
+}
+
 input[type=text],
 select {
     width: 100%;
