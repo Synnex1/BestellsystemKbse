@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entity;
 
 import java.io.Serializable;
@@ -13,10 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-/**
- *
- * @author Mike
- */
+
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Produkt.findAll", query = "SELECT p FROM Produkt p ORDER BY p.id"),
@@ -76,7 +69,7 @@ public class Produkt implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Produkt[ id=" + id + " ]";
+        return "ID: " + id + " Name: " + name + " Anzahl: " + anzahl;
     }
     
 }

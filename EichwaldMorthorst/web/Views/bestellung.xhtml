@@ -2,28 +2,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
+    <link rel="stylesheet" href="Styles/styles.css" type="text/css"/>
     <title>Bestellsystem</title>
 </h:head>
 <h:body>
     <h:outputLabel>Produktbestellung</h:outputLabel><br/>
     <h:form>
-        <h:commandButton value="Gesamtübersicht" action="/index.xhtml"/>
-        <h:commandButton value="Bestellung" />
+        <h:commandButton class="button" value="Gesamtübersicht" action="/index.xhtml"/>
+        <h:commandButton class="button" value="Bestellung" />
     </h:form>
 
     <h:form>
         <h:outputLabel value="Kunde: "/>
         <h:inputText value="#{kunde}"/><br/>
         
-        <ui:repeat var="c" value="#{form.getProdukt}">
+        <ui:repeat var="c" value="#{vm.getAllProdukt()}">
             <br/>
-            <td>#{c.text}</td><br/>
-            <td><h:button value="Löschen"/></td><br/>
+            <td>#{c.name}</td><br/>
+            <td><h:button class="button" value="Löschen"/></td><br/>
         </ui:repeat>
         
-        <h:commandButton value="weiter Eingabezeile"/><br/><br/>
+        <h:commandButton class="button" value="weiter Eingabezeile"/><br/><br/>
         
-        <h:commandButton value="Bestellung prüfen"/>
+        <h:commandButton class="button" value="Bestellung prüfen"/>
     </h:form>
     
 </h:body>
