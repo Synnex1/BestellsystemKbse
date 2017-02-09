@@ -52,6 +52,7 @@ table {
 
 .buttonNavigation:hover {
     color: blue;
+    background-color: #ced4e9;
     cursor: pointer;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
