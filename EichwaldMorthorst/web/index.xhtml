@@ -26,10 +26,8 @@
         
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Name</th> <th>Bestand</th></tr>
-            <!-- Probeweise Kartoffel -->
-            <tr><td>1</td> <td>Kartoffel</td> <td>8</td></tr>
             <ui:repeat var="c" value="#{vm.getAllProdukt()}">
-                <tr><td>#{c.id}</td><td>#{c.name}</td><td>#{c.anzahl}</td></tr><br/>
+                <tr> <td>#{c.id}</td> <td>#{c.name}</td> <td>#{c.anzahl}</td> </tr><br/>
             </ui:repeat>
         </table>
     </h:form>
