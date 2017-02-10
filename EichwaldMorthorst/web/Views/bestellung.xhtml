@@ -18,7 +18,7 @@
         
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Anzahl</th> <th></th> <th>Kommentar</th></tr>
-            <tr><td><h:inputText/></td> <td><h:inputText/></td> <td><h:commandButton class="deleteButton"/></td> <td><h:outputLabel/></td></tr>
+            <tr><td><h:inputText value="#{vm.id}"/></td> <td><h:inputText value="#{vm.anzahl}"/></td> <td><h:commandButton class="deleteButton"/></td> <td><h:outputLabel/></td></tr>
         </table>
         
         <h:commandButton class="addButton"/><br/><br/>

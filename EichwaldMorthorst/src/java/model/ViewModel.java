@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 @Named(value = "vm")
 @RequestScoped
 public class ViewModel implements Serializable {
+    private long id;
     @Size(min=2)
     private String name;
     @Digits(integer=6, fraction=0)
@@ -50,4 +51,19 @@ public class ViewModel implements Serializable {
     public List<Produkt> getAllProdukt(){
         return pc.getAllProdukt();
     }
+    
+    public boolean checkIfExist(long produktId, int anzahl){
+        if(pc.findProdukt(produktId) == null){
+            return false;
+        }else if(anzahl > pc.findProdukt(produktId).getAnzahl()){
+            return false;
+        }
+        return true;
+    }
+    
+    public void setBack(){
+        
+    }
+    
+    
 }

@@ -14,10 +14,10 @@
     <h:form>
         
         <h:outputLabel value="Neues Produkt: " />
-        <h:inputText value="#{vm.name}" /><br/>
+        <h:inputText id="inProdName" value="#{vm.name}" /><br/>
         
         <h:outputLabel value="Anzahl: " />
-        <h:inputText value="#{vm.anzahl}" /><br/>
+        <h:inputText id="inProdAnzahl" value="#{vm.anzahl}" /><br/>
         
         <h:commandButton class="button" value="Produkt anbieten" action="#{vm.newProdukt(vm.name, vm.anzahl)}"/><br/><br/>
     </h:form>
