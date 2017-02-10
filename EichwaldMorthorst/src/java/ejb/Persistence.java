@@ -29,10 +29,10 @@ public class Persistence {
     }
     
     public void remove(Object object) {
-        em.remove(object); //Exception weiterreichen
+        em.remove(object);
     }
     
-    public List<Produkt> getAllProdukt() {
+    public List<Produkt> findAllProdukt() {
         return em.createNamedQuery("Produkt.findAll", Produkt.class).getResultList();
     }
     

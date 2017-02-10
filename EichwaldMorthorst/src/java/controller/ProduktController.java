@@ -5,14 +5,17 @@ import ejb.Persistence;
 import entity.Produkt;
 import java.util.Iterator;
 import java.util.List;
+import javax.inject.Inject;
 
-public class ProduktController {
+
+public class ProduktController{
     private static ProduktController instance;
     private List<Produkt> produkte;
-    private Persistence ps = new Persistence();
+    @Inject
+    private Persistence ps;
     
     private ProduktController() {
-        allProdukt();
+        this.produkte = alleElemente();
     }
     
     public static ProduktController getInstance() {
@@ -22,8 +25,8 @@ public class ProduktController {
         return instance;
     }
     
-    private void allProdukt() {
-        this.produkte = ps.getAllProdukt();
+    private List<Produkt> alleElemente() {
+        return ps.findAllProdukt();
     }
     
     public void newProdukt(String name, int anzahl) {
