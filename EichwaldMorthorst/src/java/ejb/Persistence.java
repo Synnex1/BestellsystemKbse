@@ -24,6 +24,14 @@ public class Persistence {
         em.persist(object);
     }
     
+    public void merge(Object object) {
+        em.merge(object);
+    }
+    
+    public void remove(Object object) {
+        em.remove(object); //Exception weiterreichen
+    }
+    
     public List<Produkt> getAllProdukt() {
         return em.createNamedQuery("Produkt.findAll", Produkt.class).getResultList();
     }
