@@ -17,10 +17,10 @@ public class ProduktController{
     
     @PostConstruct
     public void init() {
-        this.produkte = alleElemente();
+        this.produkte = allElements();
     }
     
-    private List<Produkt> alleElemente() {
+    private List<Produkt> allElements() {
         return ps.findAllProdukt();
     }
     

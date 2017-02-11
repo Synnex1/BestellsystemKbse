@@ -7,10 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Bestellung.findAll", query = "SELECT b FROM Bestellung b ORDER BY b.id"),
+})
 public class Bestellung implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,6 +48,11 @@ public class Bestellung implements Serializable {
 
     public void setBestellposten(List<Bestellposten> bestellposten) {
         this.bestellposten = bestellposten;
+    }
+    
+    public void addBestellposten() {
+        Bestellposten b = new Bestellposten();
+        this.bestellposten.add(b);
     }
     
     @Override

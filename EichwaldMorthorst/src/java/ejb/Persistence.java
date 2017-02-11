@@ -5,6 +5,7 @@
  */
 package ejb;
 
+import entity.Bestellung;
 import entity.Produkt;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -36,4 +37,7 @@ public class Persistence {
         return em.createNamedQuery("Produkt.findAll", Produkt.class).getResultList();
     }
     
+    public List<Bestellung> findAllBestellung() {
+        return em.createNamedQuery("Bestellung.findAll", Bestellung.class).getResultList();
+    }    
 }
