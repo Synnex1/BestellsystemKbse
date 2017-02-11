@@ -28,6 +28,7 @@ public class ProduktController{
         Produkt p = new Produkt();
         p.setName(name);
         p.setAnzahl(anzahl);
+        ps.persist(p);
         this.produkte.add(p);
     }
     
