@@ -1,6 +1,5 @@
 package model;
 
-import controller.BestellungController;
 import java.io.Serializable;
 import javax.inject.Named;
 import controller.ProduktController;

@@ -27,6 +27,8 @@ public class ViewModelBestellung implements Serializable {
     private Bestellung bestellung;
     @Inject
     BestellungController bc;
+
+    
     
     public ViewModelBestellung(){
     }
@@ -55,10 +57,17 @@ public class ViewModelBestellung implements Serializable {
         this.anzahl = anzahl;
     }
     
-    public Bestellung newBestellung(String kunde, List<Bestellposten> bestellposten){
-        this.bestellung.setKunde(kunde);
-        this.bestellung.setBestellposten(bestellposten);
-        return this.bestellung;
+    public Bestellung getBestellung() {
+        return bestellung;
+    }
+
+    public void setBestellung(Bestellung bestellung) {
+        this.bestellung = bestellung;
+    }
+    
+    public void newBestellung(){
+        bestellung = new Bestellung();
+        bestellung.addBestellposten();
     }
     
 }
