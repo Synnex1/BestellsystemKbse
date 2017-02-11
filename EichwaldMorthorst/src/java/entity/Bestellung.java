@@ -2,6 +2,7 @@
 package entity; 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Bestellung implements Serializable {
     private Long id;
     private String kunde;
     @OneToMany
-    private List<Bestellposten> bestellposten;
+    private List<Bestellposten> bestellposten = new ArrayList<>();
 
     public Long getId() {
         return id;
