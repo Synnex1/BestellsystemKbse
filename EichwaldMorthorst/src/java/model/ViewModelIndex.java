@@ -1,5 +1,6 @@
 package model;
 
+import controller.BestellungController;
 import java.io.Serializable;
 import javax.inject.Named;
 import controller.ProduktController;
@@ -13,9 +14,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 
-@Named(value = "vm")
+@Named(value = "vmIndex")
 @RequestScoped
-public class ViewModel implements Serializable {
+public class ViewModelIndex implements Serializable {
     private long id;
     @Size(min=2)
     private String name;
@@ -26,7 +27,7 @@ public class ViewModel implements Serializable {
     @Inject
     ProduktController pc;
     
-    public ViewModel(){
+    public ViewModelIndex(){
     }
 
     public long getId() {
@@ -80,17 +81,4 @@ public class ViewModel implements Serializable {
         
     }
     
-    public boolean checkIfNameAlreadyExist(String name){
-        List<Produkt> allProdukte = pc.getAllProdukt();
-        for(Produkt p : allProdukte){
-            if(p.getName().equalsIgnoreCase(name)){
-                return true;
-            }
-        }
-        return false;
-    }
-   
-    public void addAnzahlToExisting(String name, int anzahl){
-        
-    }
 }

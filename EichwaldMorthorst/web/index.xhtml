@@ -14,26 +14,26 @@
     <h:form>
         
         <h:outputLabel value="Neues Produkt: " />
-        <h:inputText id="inProdName" value="#{vm.name}" /><br/>
+        <h:inputText id="inProdName" value="#{vmIndex.name}" /><br/>
         
         <h:outputLabel value="Anzahl: " />
-        <h:inputText id="inProdAnzahl" value="#{vm.anzahl}" /><br/>
+        <h:inputText id="inProdAnzahl" value="#{vmIndex.anzahl}" /><br/>
         
-        <h:commandButton class="button" value="Produkt anbieten" action="#{vm.newProdukt(vm.name, vm.anzahl)}"/><br/><br/>
+        <h:commandButton class="button" value="Produkt anbieten" action="#{vmIndex.newProdukt(vmIndex.name, vmIndex.anzahl)}"/><br/><br/>
     </h:form>
     <h:form>
         <h:outputLabel value="vorhandene Produkte: "/><br/>
         
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Name</th> <th>Bestand</th></tr>
-            <ui:repeat var="c" value="#{vm.getAllProdukt()}">
-                <tr> <td>#{c.id}</td> <td>#{c.name}</td> <td>#{c.anzahl}</td> </tr><br/><br/><br/>
+            <ui:repeat var="c" value="#{vmIndex.getAllProdukt()}">
+                <tr> <td>#{c.id}</td> <td>#{c.name}</td> <td>#{c.anzahl}</td> <td><commandbutton value="Bearbeiten"/></td> </tr><br/><br/><br/>
             </ui:repeat>
         </table>
     </h:form>
     <h:form>
         <h:outputLabel value="-------Nur zur Ueberpruefung-------"/><br/>
-        <h:outputText value="#{vm.getAllProdukt()}"/>
+        <h:outputText value="#{vmIndex.getAllProdukt()}"/>
     </h:form>
 </h:body>
 

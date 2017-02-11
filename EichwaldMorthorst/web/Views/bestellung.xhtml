@@ -18,12 +18,14 @@
         
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Anzahl</th> <th></th> <th>Kommentar</th></tr>
+            <ui:repeat var="d" value="#{vm.getAllProdukt()}">
             <tr><td><h:inputText value="#{vm.id}"/></td> <td><h:inputText value="#{vm.anzahl}"/></td> <td><h:commandButton class="deleteButton"/></td> <td><h:outputLabel/></td></tr>
+            </ui:repeat>    
         </table>
         
         <h:commandButton class="addButton"/><br/><br/>
         
-        <h:commandButton class="button" value="Bestellung prüfen"/>
+        <h:commandButton class="button" value="Bestellung prüfen" action="#{vm.newBestellposten(id, anzahl)}"/>
     </h:form>
     
 </h:body>
