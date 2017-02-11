@@ -23,6 +23,15 @@ public class Produkt implements Serializable {
     private String name;
     private int anzahl;
 
+    public Produkt(){
+        
+    }
+    
+    public Produkt(String name, int anzahl) {
+        this.name = name;
+        this.anzahl = anzahl;
+    }
+    
     public Long getId() {
         return id;
     }

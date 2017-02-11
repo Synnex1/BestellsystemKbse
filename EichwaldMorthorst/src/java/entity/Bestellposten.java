@@ -19,7 +19,7 @@ public class Bestellposten implements Serializable {
     @OneToOne
     private Produkt produkt;
     private int anzahl;
-
+    
     public Long getId() {
         return id;
     }

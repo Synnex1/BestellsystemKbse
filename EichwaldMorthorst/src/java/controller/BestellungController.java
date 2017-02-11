@@ -1,4 +1,3 @@
-
 package controller;
 
 import ejb.Persistence;
