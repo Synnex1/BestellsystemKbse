@@ -27,7 +27,14 @@ public class ViewModel implements Serializable {
     ProduktController pc;
     
     public ViewModel(){
-        
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,7 +61,7 @@ public class ViewModel implements Serializable {
         return pc.getAllProdukt();
     }
     
-    public boolean checkIfExist(long produktId, int anzahl){
+    public boolean checkIfExistEnough(long produktId, int anzahl){
         if(pc.findProdukt(produktId) == null){
             return false;
         }else if(anzahl > pc.findProdukt(produktId).getAnzahl()){
@@ -63,9 +70,27 @@ public class ViewModel implements Serializable {
         return true;
     }
     
+    public void buyProdukt(long produktId, int anzahl){
+        if(checkIfExistEnough(produktId, anzahl) == true){
+            pc.findProdukt(produktId).setAnzahl(getAnzahl()-anzahl);
+        }
+    }
+    
     public void setBack(){
         
     }
     
-    
+    public boolean checkIfNameAlreadyExist(String name){
+        List<Produkt> allProdukte = pc.getAllProdukt();
+        for(Produkt p : allProdukte){
+            if(p.getName().equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+   
+    public void addAnzahlToExisting(String name, int anzahl){
+        
+    }
 }
