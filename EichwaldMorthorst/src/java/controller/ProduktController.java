@@ -5,24 +5,19 @@ import ejb.Persistence;
 import entity.Produkt;
 import java.util.Iterator;
 import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.inject.Singleton;
 import javax.inject.Inject;
 
-
+@Singleton
 public class ProduktController{
-    private static ProduktController instance;
     private List<Produkt> produkte;
     @Inject
     private Persistence ps;
     
-    private ProduktController() {
+    @PostConstruct
+    public void init() {
         this.produkte = alleElemente();
-    }
-    
-    public static ProduktController getInstance() {
-        if(instance == null) {
-            instance = new ProduktController();
-        }
-        return instance;
     }
     
     private List<Produkt> alleElemente() {

@@ -6,6 +6,7 @@ import controller.ProduktController;
 import entity.Produkt;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -22,10 +23,11 @@ public class ViewModel implements Serializable {
     @Min(value=1, message="Der Wert muss größer als 1 sein!")
     @Max(value=10000, message="Es dürfen nicht mehr als 10000 Artikel auf einmal verkauft werden")
     private int anzahl;
+    @Inject
     ProduktController pc;
     
     public ViewModel(){
-        this.pc = ProduktController.getInstance();
+        
     }
 
     public String getName() {
