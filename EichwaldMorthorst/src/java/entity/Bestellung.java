@@ -67,7 +67,7 @@ public class Bestellung implements Serializable {
     
     public void deleteBestellposten(Long id){
         for(Bestellposten bp : bestellposten){
-            if(bp.getId() == id){
+            if(bp.getId().compareTo(id) == 0){
                 this.bestellposten.remove(bp);
             }
         }
