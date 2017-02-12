@@ -49,7 +49,7 @@ public class Bestellung implements Serializable {
     
     public Bestellposten getBestellposten(Long id){
         for(Bestellposten bp : bestellposten){
-            if(bp.getId() == id){
+            if(bp.getId().compareTo(id) == 0){
                 return bp;
             }
         }

@@ -21,7 +21,7 @@
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Anzahl</th> <th></th> <th>Kommentar</th></tr>
             <ui:repeat var="d" value="#{uS.bestellung.bestellposten}">
-                <tr><td><h:inputText value="#{d.id}"/></td> <td><h:inputText value="#{d.anzahl}"/></td> <td><h:commandButton class="deleteButton"/></td> <td><h:outputLabel/></td></tr>
+                <tr><td><h:inputText value="#{d.id}"/></td> <td><h:inputText value="#{d.anzahl}"/></td> <td><h:commandButton class="deleteButton" action="#{uS.deleteBestellPosten(d.id)}"/></td> <td><h:outputLabel/></td></tr>
             </ui:repeat>    
         </table>
         
