@@ -10,7 +10,7 @@
     <h:outputLabel class="ueberschrift">Produktbestellung</h:outputLabel><br/>
     <h:form>
         <h:commandButton class="buttonNavigation" value="Produktübersicht" action="/index.xhtml"/>
-        <h:commandButton class="buttonNavigation" value="Bestellung" action="Views/bestellung.xhtml"><f:actionListener binding="#{vmBestellung.newBestellung()}"/></h:commandButton>
+        <h:commandButton class="buttonNavigation" value="Bestellung" action="Views/bestellung.xhtml"></h:commandButton>
         <h:commandButton class="buttonNavigation" value="Bestellungsübericht" action="/Views/bestellungsuebersicht.xhtml"/><br/><br/><br/>
     </h:form>
 
@@ -20,12 +20,12 @@
         
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Anzahl</th> <th></th> <th>Kommentar</th></tr>
-            <ui:repeat var="d" value="#{vmBestellung.getBestellung().getBestellposten()}">
+            <ui:repeat var="d" value="#{uS.bestellung.bestellposten}">
                 <tr><td><h:inputText value="#{d.id}"/></td> <td><h:inputText value="#{d.anzahl}"/></td> <td><h:commandButton class="deleteButton"/></td> <td><h:outputLabel/></td></tr>
             </ui:repeat>    
         </table>
         
-        <h:commandButton class="addButton" action="#{vmBestellung.addBestellPosten()}"/><br/><br/>
+        <h:commandButton class="addButton" action="#{uS.addBestellPosten()}"/><br/><br/>
         
         <h:commandButton class="button" value="Bestellung prüfen" />
     </h:form>

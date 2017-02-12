@@ -65,17 +65,9 @@ public class ViewModelBestellung implements Serializable {
         this.bestellung = bestellung;
     }
     
-    public void newBestellung(){
-        bestellung = new Bestellung();
-        bestellung.addBestellposten();
-    }
     
-    public void addBestellPosten(){
-        bestellung.addBestellposten();
-    }
     
-    public void deleteBestellPosten(long id){
-        bestellung.deleteBestellposten(id);
-    }
+    
+    
     
 }
