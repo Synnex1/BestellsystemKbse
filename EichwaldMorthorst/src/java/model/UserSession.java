@@ -1,6 +1,7 @@
 
 package model;
 
+import entity.Bestellposten;
 import entity.Bestellung;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -10,10 +11,22 @@ import javax.inject.Named;
 @SessionScoped
 public class UserSession implements Serializable{
     private Bestellung bestellung;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+        id++;
+    }
 
     public UserSession(){
         this.bestellung = new Bestellung();
-        this.bestellung.addBestellposten();
+        Bestellposten b = new Bestellposten();
+        b.setId(this.id);
+        bestellung.getBestellposten().add(b);
     }
     
     public Bestellung getBestellung() {
@@ -25,16 +38,15 @@ public class UserSession implements Serializable{
     }
     
     public void addBestellPosten(){
-        this.bestellung.addBestellposten();
+        Bestellposten b = new Bestellposten();
+        b.setId(this.id);
+        this.getBestellung().getBestellposten().add(b);
     }
     
-    public void deleteBestellPosten(long id){
+    public void deleteBestellPosten(Long id){
         bestellung.deleteBestellposten(id);
     }
     
-    public void newBestellung(){
-        bestellung.addBestellposten();
-    }
     
     
 }
