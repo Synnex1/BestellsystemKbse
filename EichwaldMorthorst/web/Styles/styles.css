@@ -84,6 +84,14 @@ table {
     background-size: 100%;
 }
 
+.editButton {
+    background: url(./notes.png) no-repeat;
+    background-size: 100%;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
 input[type=text],
 select {
     width: 100%;

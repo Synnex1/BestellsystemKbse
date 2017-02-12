@@ -28,7 +28,7 @@
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Name</th> <th>Bestand</th></tr>
             <ui:repeat var="c" value="#{vmIndex.getAllProdukt()}">
-                <tr> <td>#{c.id}</td> <td>#{c.name}</td> <td>#{c.anzahl}</td> <td><commandbutton value="Bearbeiten"/></td> </tr><br/><br/><br/>
+                <tr> <td>#{c.id}</td> <td>#{c.name}</td> <td>#{c.anzahl}</td> <td><h:commandButton class="editButton"/></td> </tr><br/>
             </ui:repeat>
         </table>
     </h:form>

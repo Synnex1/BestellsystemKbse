@@ -55,6 +55,8 @@ public class ViewModelIndex implements Serializable {
     
     public void newProdukt(String name, int anzahl){
         pc.newProdukt(name, anzahl);
+        this.name="";
+        this.anzahl=0;
     }
     
     public List<Produkt> getAllProdukt(){

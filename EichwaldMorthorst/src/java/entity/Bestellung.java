@@ -46,6 +46,15 @@ public class Bestellung implements Serializable {
     public List<Bestellposten> getBestellposten() {
         return bestellposten;
     }
+    
+    public Bestellposten getBestellposten(Long id){
+        for(Bestellposten bp : bestellposten){
+            if(bp.getId() == id){
+                return bp;
+            }
+        }
+        return null;
+    }
 
     public void setBestellposten(List<Bestellposten> bestellposten) {
         this.bestellposten = bestellposten;
@@ -54,6 +63,14 @@ public class Bestellung implements Serializable {
     public void addBestellposten() {
         Bestellposten b = new Bestellposten();
         this.bestellposten.add(b);
+    }
+    
+    public void deleteBestellposten(Long id){
+        for(Bestellposten bp : bestellposten){
+            if(bp.getId() == id){
+                this.bestellposten.remove(bp);
+            }
+        }
     }
     
     @Override
