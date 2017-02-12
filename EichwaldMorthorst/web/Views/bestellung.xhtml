@@ -17,16 +17,30 @@
     <h:form>
         <h:outputLabel value="Kunde: "/>
         <h:inputText value="#{kunde}"/><br/>
-        
+        <!--
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>id</th> <th>Anzahl</th> <th></th> <th>Kommentar</th></tr>
             <ui:repeat var="d" value="#{uS.bestellung.bestellposten}">
-                <tr><td><h:inputText value="#{d.id}"/></td> <td><h:inputText value="#{d.anzahl}"/></td> <td><h:commandButton class="deleteButton" action="#{uS.deleteBestellPosten(d.id)}"/></td> <td><h:outputLabel/></td></tr>
+                <tr><td><h:inputText value="#{d.id}"/></td> <td><h:inputText value="#{d.anzahl}"/></td> <td><h:commandButton class="deleteButton" /></td> <td><h:outputLabel/></td></tr>
             </ui:repeat>    
         </table>
         
         <h:commandButton class="addButton" action="#{uS.addBestellPosten()}"/><br/><br/>
-        
+        -->
+        <table rules="rows" cellpadding="10" cellspacing="5">
+            <tr><th>Produkt</th> <th>Anzahl</th> <th>Bestellen</th></tr>
+            <tr>
+                <td>
+                    <h:selectOneMenu value="#{vmBestellung.produkt}">
+                        <f:selectItems value="#{vmIndex.getAllProdukt()}" var="c" itemLabel="#{c.name}" itemValue="#{c}"/>
+                    </h:selectOneMenu>
+                </td>
+                <td><h:outputText value="#{vmBestellung.produkt}"/></td>
+                <td><h:inputText value="#{vmBestellung.anzahl}"/></td>
+            </tr>
+        </table>
+        <h:commandButton value="Submit" type="submit" action="result"/>
+        <h:outputText value="#{vmBestellung.produkt}" />
         <h:commandButton class="button" value="Bestellung prüfen" />
     </h:form>
     

@@ -11,7 +11,7 @@ import javax.inject.Named;
 @SessionScoped
 public class UserSession implements Serializable{
     private Bestellung bestellung;
-    private Long id;
+    private Long id = 0L;
 
     public Long getId() {
         return id;
@@ -40,7 +40,7 @@ public class UserSession implements Serializable{
     public void addBestellPosten(){
         Bestellposten b = new Bestellposten();
         b.setId(this.id);
-        this.getBestellung().getBestellposten().add(b);
+        this.bestellung.getBestellposten().add(b);
     }
     
     public void deleteBestellPosten(Long id){

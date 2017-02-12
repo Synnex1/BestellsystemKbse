@@ -25,12 +25,21 @@ public class ViewModelBestellung implements Serializable {
     @Max(value=10000, message="Es dürfen nicht mehr als 10000 Artikel auf einmal verkauft werden")
     private int anzahl;
     private Bestellung bestellung;
+    private Produkt produkt = new Produkt();
     @Inject
     BestellungController bc;
 
     
     
     public ViewModelBestellung(){
+    }
+
+    public Produkt getProdukt() {
+        return produkt;
+    }
+
+    public void setProdukt(Produkt produkt) {
+        this.produkt = produkt;
     }
 
     public long getId() {

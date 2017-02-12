@@ -69,7 +69,7 @@ public class Produkt implements Serializable {
 
     @Override
     public String toString() {
-        return "ID: " + id + " / Name: " + name + " / Anzahl: " + anzahl;
+        return "ID:" + id + "\\Name:" + name + "\\Anzahl:" + anzahl;
     }
     
 }
