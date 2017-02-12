@@ -68,5 +68,4 @@ public class Bestellposten implements Serializable {
     public String toString() {
         return "entity.Bestellposten[ id=" + id + " ]";
     }
-    
 }
