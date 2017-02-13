@@ -1,6 +1,7 @@
 package controller;
 
 import ejb.Persistence;
+import entity.Bestellposten;
 import entity.Bestellung;
 import entity.Produkt;
 import java.util.List;
@@ -46,7 +47,7 @@ public class BestellungController {
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
                 b.addBestellposten(p, anzahl);
-                ps.persist(b);
+                ps.merge(b);
                 return b;
             }
         }

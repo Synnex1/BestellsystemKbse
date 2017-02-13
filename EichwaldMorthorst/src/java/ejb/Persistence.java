@@ -33,6 +33,10 @@ public class Persistence {
         em.remove(object);
     }
     
+    public void refresh(Object object) {
+        em.refresh(object);
+    }
+    
     public List<Produkt> findAllProdukt() {
         return em.createNamedQuery("Produkt.findAll", Produkt.class).getResultList();
     }
