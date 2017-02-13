@@ -63,6 +63,16 @@ public class ViewModelIndex implements Serializable {
         return pc.getAllProdukt();
     }
     
+    public Produkt getProduktById(Long id){
+        for(Produkt p: pc.getAllProdukt()){
+            if(p.getId().compareTo(id) == 0){
+                return p;
+            }
+        }
+        
+        return null;
+    }
+    
     public boolean checkIfExistEnough(long produktId, int anzahl){
         if(pc.findProdukt(produktId) == null){
             return false;

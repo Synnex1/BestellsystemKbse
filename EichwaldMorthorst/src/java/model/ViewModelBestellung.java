@@ -15,6 +15,7 @@ import entity.Bestellung;
 @Named(value = "vmBestellung")
 @RequestScoped
 public class ViewModelBestellung implements Serializable {
+    
     private long id;
     @Size(min=2)
     private String name;
@@ -34,6 +35,7 @@ public class ViewModelBestellung implements Serializable {
     public ViewModelBestellung(){
     }
 
+    
     public Produkt getProdukt() {
         return produkt;
     }
@@ -75,8 +77,9 @@ public class ViewModelBestellung implements Serializable {
     }
     
     public void valueChanged(){
-        
     }
+    
+    
     
     
     

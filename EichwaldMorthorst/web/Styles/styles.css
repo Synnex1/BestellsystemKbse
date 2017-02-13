@@ -134,3 +134,14 @@ label {
     font-family: 'fraulein';
     font-size: 40px;
 }
+
+.hidden {
+    display: none;
+}
+
+.nothidden {
+    display: block;
+    transition-property: display;
+    -webkit-transition-duration: 4s;
+    transition-duration: 4s;
+}
