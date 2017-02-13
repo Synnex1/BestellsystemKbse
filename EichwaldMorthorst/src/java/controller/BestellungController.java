@@ -48,6 +48,7 @@ public class BestellungController {
             if(b.getId().compareTo(bestellung_id) == 0) {
                 b.addBestellposten(p, anzahl);
                 ps.merge(b);
+                ps.flush();
                 return b;
             }
         }

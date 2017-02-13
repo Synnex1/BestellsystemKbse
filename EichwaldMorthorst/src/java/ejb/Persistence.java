@@ -33,6 +33,10 @@ public class Persistence {
         em.remove(object);
     }
     
+    public void flush() {
+        em.flush();
+    }
+    
     public void refresh(Object object) {
         em.refresh(object);
     }

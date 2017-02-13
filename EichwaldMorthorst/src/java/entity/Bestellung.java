@@ -2,8 +2,7 @@
 package entity; 
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class Bestellung implements Serializable {
     private Long id;
     private String kunde;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellung")
-    private List<Bestellposten> bestellposten = new ArrayList<>();
+    private Set<Bestellposten> bestellposten;
 
     public Long getId() {
         return id;
@@ -44,10 +43,10 @@ public class Bestellung implements Serializable {
         this.kunde = kunde;
     }
 
-    public List<Bestellposten> getBestellposten() {
+    public Set<Bestellposten> getBestellposten() {
         return bestellposten;
     }
-    
+
     public Bestellposten getBestellposten(Long id){
         for(Bestellposten bp : bestellposten){
             if(bp.getId().compareTo(id) == 0){
@@ -56,8 +55,8 @@ public class Bestellung implements Serializable {
         }
         return null;
     }
-
-    public void setBestellposten(List<Bestellposten> bestellposten) {
+    
+    public void setBestellposten(Set<Bestellposten> bestellposten) {
         this.bestellposten = bestellposten;
     }
     
