@@ -52,4 +52,15 @@ public class BestellungController {
         }
         return null;
     }
+    
+    public Bestellung updateBestellung(Long bestellung_id, String kunde) {
+        for(Bestellung b : bestellungen) {
+            if(b.getId().compareTo(bestellung_id) == 0) {
+                b.setKunde(kunde);
+                ps.persist(b);
+                return b;
+            }
+        }
+        return null;
+    }
 }
