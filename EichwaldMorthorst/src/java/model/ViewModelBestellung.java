@@ -1,6 +1,7 @@
 package model;
 
 import controller.BestellungController;
+import controller.ProduktController;
 import java.io.Serializable;
 import javax.inject.Named;
 import entity.Produkt;
@@ -25,6 +26,8 @@ public class ViewModelBestellung implements Serializable {
     private int anzahl =1;
     @Inject
     BestellungController bc;
+    @Inject
+    ProduktController pc;
     @Inject
     UserSession uS;
 
@@ -59,6 +62,17 @@ public class ViewModelBestellung implements Serializable {
     
     public void valueChanged(){
     }
+    
+    public boolean checkIfExistEnough(long produktId, int anzahl){
+        if(pc.findProdukt(produktId) == null){
+            return false;
+        }else if(anzahl > pc.findProdukt(produktId).getAnzahl()){
+            return false;
+        }
+        return true;
+    }
+    
+    
     
     public void newKunde(String kunde){
         uS.setBestellung(bc.newBestellung(kunde));

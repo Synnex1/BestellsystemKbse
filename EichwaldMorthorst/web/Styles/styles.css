@@ -148,6 +148,7 @@ label {
     transition-property: display;
     -webkit-transition-duration: 4s;
     transition-duration: 4s;
+    transition-delay: 2s;
     width: 100%;
 }
 
@@ -156,4 +157,9 @@ label {
     text-transform: uppercase;
     color: blue;
     font-family: 'grungerocker';
+}
+
+errorClass {
+    color: deeppink;
+    background-color: deepskyblue;
 }

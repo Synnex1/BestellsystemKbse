@@ -10,7 +10,7 @@
     <h:outputLabel class="ueberschrift">Produktbestellung</h:outputLabel><br/>
     <h:form>
         <h:commandButton class="buttonNavigation" value="Produktübersicht" action="/index.xhtml"/>
-        <h:commandButton class="buttonNavigation" value="Bestellung" action="Views/bestellung.xhtml"></h:commandButton>
+        <h:commandButton class="buttonNavigation" value="Bestellung" action="/Views/bestellung.xhtml"></h:commandButton>
         <h:commandButton class="buttonNavigation" value="Bestellungsübersicht" action="/Views/bestellungsuebersicht.xhtml"/><br/><br/><br/>
     </h:form>
 
@@ -38,7 +38,10 @@
                 </td>
                 
                 <td width="12%"><h:inputText value="#{uS.produktAnzahl}"/></td>
-                <td width="40%"><h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}"/></td>
+                <td width="40%"><h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}">
+                                    <f:actionListener binding="#{vmBestellung.checkIfExistEnough(uS.produktId, uS.produktAnzahl)}"/>
+                                </h:commandButton>
+                </td>
             </tr>
         </table><br/><br/>
         
