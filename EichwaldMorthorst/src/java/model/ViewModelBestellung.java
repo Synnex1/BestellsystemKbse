@@ -23,7 +23,6 @@ public class ViewModelBestellung implements Serializable {
     @Min(value=1, message="Der Wert muss größer als 1 sein!")
     @Max(value=10000, message="Es dürfen nicht mehr als 10000 Artikel auf einmal verkauft werden")
     private int anzahl =1;
-    private Bestellung bestellung;
     @Inject
     BestellungController bc;
     @Inject
@@ -58,21 +57,15 @@ public class ViewModelBestellung implements Serializable {
         this.anzahl = anzahl;
     }
     
-    public Bestellung getBestellung() {
-        return bestellung;
-    }
-
-    public void setBestellung(Bestellung bestellung) {
-        this.bestellung = bestellung;
-    }
-    
     public void valueChanged(){
     }
     
+    public void newKunde(String kunde){
+        uS.setBestellung(bc.newBestellung(kunde));
+    }
     
-    
-    
-    
-    
+    public void zumWarenkorbZufuegen(Long bestellId, Long produktId, int produktAnzahl){
+        bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl);
+    }
     
 }

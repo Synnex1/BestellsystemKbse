@@ -19,19 +19,14 @@
         <table class="#{(uS.hide)?'nothidden':'hidden'}">
             <tr>
                 <td><h:inputText value="#{uS.bestellKunde}"  required="true" requiredMessage="Kunde muss angegeben werden" /></td>
-                <td width="10%"><h:commandButton value="Speichern" class="button" action="#{uS.hideFalse()}"/></td><br/><br/>
+                <td width="10%"><h:commandButton value="Speichern" class="button" action="submit">
+                                    <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
+                                    <f:actionListener binding="#{uS.hideFalse()}"/>
+                                </h:commandButton>
+                </td><br/><br/>
             </tr>
         </table><br/>
         <h:outputLabel value="#{uS.bestellKunde}" class="kunde"/><br/><br/>
-        <!--
-        <table rules="rows" cellpadding="10" cellspacing="5">
-            <tr><th>id</th> <th>Anzahl</th> <th></th> <th>Kommentar</th></tr>
-            <ui:repeat var="d" value="#{uS.bestellung.bestellposten}">
-                <tr><td><h:inputText value="#{d.id}"/></td> <td><h:inputText value="#{d.anzahl}"/></td> <td><h:commandButton class="deleteButton" /></td> <td><h:outputLabel/></td></tr>
-            </ui:repeat>    
-        </table>
-        
-        -->
     </h:form>
     <h:form id="wrapper" class="#{(uS.hide)?'hidden':'nothidden'}">
         <table rules="rows" cellpadding="10" cellspacing="5" >
@@ -46,9 +41,19 @@
                 <td><h:inputText value="#{uS.produktAnzahl}"/></td>
             </tr>
         </table>
-        <h:commandButton class="button" value="hinzufügen" />
+        <h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}"/><br/><br/>
+        
+        <table>
+            <h:outputLabel value="Warenkorb"/>
+            <tr> <th>Produkt</th> <th>Anzahl</th> </tr>
+            <ui:repeat var="n" value="#{uS.bestellung}">    
+                <tr>#{c.name}</tr><tr>#{c.anzahl}</tr>
+            </ui:repeat>
+        </table>
     </h:form>
-    
+    <h:form>
+        
+    </h:form>
 </h:body>
 
 </html>

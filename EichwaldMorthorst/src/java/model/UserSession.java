@@ -62,10 +62,8 @@ public class UserSession implements Serializable{
         this.produktAnzahl = produktAnzahl;
     }
     
-    public boolean hideFalse(){
-        return this.hide = false;
+    public void hideFalse(){
+        this.hide = false;
     }
-    
-    
     
 }
