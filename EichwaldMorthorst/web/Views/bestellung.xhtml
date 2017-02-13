@@ -51,7 +51,7 @@
             <tr> <th>Produkt</th> <th>Anzahl</th> </tr>
 
             <ui:repeat var="b" value="#{uS.bestellung.bestellposten}">    
-                <tr><td>#{b.name}</td><td>#{b.anzahl}</td></tr>
+                <tr><td>#{b.produkt.name}</td><td>#{b.anzahl}</td></tr>
 
             </ui:repeat>
         </table>

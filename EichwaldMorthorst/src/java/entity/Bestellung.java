@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Bestellung implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String kunde;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellung")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellung", fetch = FetchType.EAGER)
     private Set<Bestellposten> bestellposten;
 
     public Long getId() {
