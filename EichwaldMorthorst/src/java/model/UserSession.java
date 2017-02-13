@@ -20,6 +20,15 @@ public class UserSession implements Serializable{
     @Min(value=1, message="Der Wert muss größer als 1 sein!")
     @Max(value=10000, message="Es dürfen nicht mehr als 10000 Artikel auf einmal verkauft werden")
     private int produktAnzahl = 1;
+    private String  bestellKunde; 
+
+    public String getBestellKunde() {
+        return bestellKunde;
+    }
+
+    public void setBestellKunde(String bestellKunde) {
+        this.bestellKunde = bestellKunde;
+    }
     
     public Bestellung getBestellung() {
         return bestellung;
