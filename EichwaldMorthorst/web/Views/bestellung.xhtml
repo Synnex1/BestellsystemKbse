@@ -16,13 +16,13 @@
 
     <h:form>
         <h:outputLabel value="Kunde: "/>
-        <table class="#{(uS.hide) ? 'nothidden':'hidden'}">
-            <tr>
+        <table>
+            <tr class="#{(uS.hide) ? 'nothidden':'hidden'}">
                 <td><h:inputText value="#{uS.bestellKunde}"  required="true" requiredMessage="Kunde muss angegeben werden" /></td>
-                <td width="10%"><h:commandButton value="Speichern" class="button" onclick="submit">
-                                    <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
-                                    <f:actionListener binding="#{uS.hideFalse()}"/>
-                                </h:commandButton>
+                <td><h:commandButton value="Speichern" class="button" onclick="submit">
+                        <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
+                        <f:actionListener binding="#{uS.hideFalse()}"/>
+                    </h:commandButton>
                 </td><br/><br/>
             </tr>
         </table><br/>
@@ -38,16 +38,17 @@
                     </h:selectOneMenu>
                 </td>
                 
-                <td><h:inputText value="#{uS.produktAnzahl}"/></td>
+                <td width="100px"><h:inputText value="#{uS.produktAnzahl}"/></td>
+                <td width="200px"><h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}"/></td>
             </tr>
-        </table>
-        <h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}"/><br/><br/>
+        </table><br/><br/>
+        
         
         <table>
             <h:outputLabel value="Warenkorb"/>
             <tr> <th>Produkt</th> <th>Anzahl</th> </tr>
-            <ui:repeat var="n" value="#{uS.bestellung}">    
-                <tr>#{c.name}</tr><tr>#{c.anzahl}</tr>
+            <ui:repeat var="n" value="#{uS.bestellung.bestellposten}">    
+                <tr><td>#{n.name}</td><td>#{n.anzahl}</td></tr>
             </ui:repeat>
         </table>
     </h:form>

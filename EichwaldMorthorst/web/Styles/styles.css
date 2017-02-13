@@ -149,6 +149,7 @@ label {
     transition-property: display;
     -webkit-transition-duration: 4s;
     transition-duration: 4s;
+    width: 100%;
 }
 
 .kunde {

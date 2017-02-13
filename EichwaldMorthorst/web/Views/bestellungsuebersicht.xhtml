@@ -13,6 +13,17 @@
         <h:commandButton class="buttonNavigation" value="Bestellungsübericht" action="/Views/bestellungsuebersicht.xhtml"/><br/><br/><br/>
     </h:form>
     
+    <h:form>
+        <ui:repeat var="c" value="hier muss die Liste aller Bestellungen rein">
+            <h:outputLabel value="hier muss der Kundenname der Bestellung rein"/>
+            <table>
+                <tr><th>Produkt</th><th>Anzahl</th></tr>
+                <ui:repeat var="d" value="hier muss die Liste der Bestellposten rein">
+                    <tr><td>Produktname</td><td>Anzahl</td></tr>
+                </ui:repeat>
+            </table>
+        </ui:repeat>
+    </h:form>
 </h:body>
 
 </html>
