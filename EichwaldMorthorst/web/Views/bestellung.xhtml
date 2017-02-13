@@ -19,7 +19,7 @@
         <table class="#{(uS.hide) ? 'nothidden':'hidden'}">
             <tr>
                 <td><h:inputText value="#{uS.bestellKunde}"  required="true" requiredMessage="Kunde muss angegeben werden" /></td>
-                <td width="10%"><h:commandButton value="Speichern" class="button" action="submit">
+                <td width="10%"><h:commandButton value="Speichern" class="button" onclick="submit">
                                     <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
                                     <f:actionListener binding="#{uS.hideFalse()}"/>
                                 </h:commandButton>
