@@ -60,8 +60,10 @@ public class Bestellung implements Serializable {
         this.bestellposten = bestellposten;
     }
     
-    public void addBestellposten() {
+    public void addBestellposten(Produkt p, int anzahl) {
         Bestellposten b = new Bestellposten();
+        b.setProdukt(p);
+        b.setAnzahl(anzahl);
         this.bestellposten.add(b);
     }
     

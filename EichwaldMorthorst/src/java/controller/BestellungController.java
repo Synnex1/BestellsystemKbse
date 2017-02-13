@@ -2,6 +2,7 @@ package controller;
 
 import ejb.Persistence;
 import entity.Bestellung;
+import entity.Produkt;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -28,7 +29,27 @@ public class BestellungController {
         return this.bestellungen;
     }
     
-    public Bestellung validateBestellung(Bestellung b) {
-        return new Bestellung();
+    public Bestellung newBestellung(String kunde) {
+        Bestellung b = new Bestellung();
+        b.setKunde(kunde);
+        ps.persist(b);
+        this.bestellungen.add(b);
+        return b;
+    }
+    
+    public Bestellung addBestellpostenToBestellung(Long bestellung_id, Long produkt_id, int anzahl) {
+        Produkt p = pc.findProdukt(produkt_id);
+        if(p.getAnzahl() < anzahl) {
+            return null;
+        }
+        
+        for(Bestellung b : bestellungen) {
+            if(b.getId().compareTo(bestellung_id) == 0) {
+                b.addBestellposten(p, anzahl);
+                ps.persist(b);
+                return b;
+            }
+        }
+        return null;
     }
 }
