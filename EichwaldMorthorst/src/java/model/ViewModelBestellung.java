@@ -1,11 +1,9 @@
 package model;
 
 import controller.BestellungController;
-import entity.Bestellposten;
 import java.io.Serializable;
 import javax.inject.Named;
 import entity.Produkt;
-import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.Digits;
@@ -23,11 +21,13 @@ public class ViewModelBestellung implements Serializable {
     @Digits(integer=6, fraction=0)
     @Min(value=1, message="Der Wert muss größer als 1 sein!")
     @Max(value=10000, message="Es dürfen nicht mehr als 10000 Artikel auf einmal verkauft werden")
-    private int anzahl;
+    private int anzahl =1;
     private Bestellung bestellung;
     private Produkt produkt = new Produkt();
     @Inject
     BestellungController bc;
+    @Inject
+    UserSession uS;
 
     
     
@@ -74,6 +74,9 @@ public class ViewModelBestellung implements Serializable {
         this.bestellung = bestellung;
     }
     
+    public void valueChanged(){
+        
+    }
     
     
     

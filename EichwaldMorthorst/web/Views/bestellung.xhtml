@@ -25,18 +25,17 @@
             </ui:repeat>    
         </table>
         
-        <h:commandButton class="addButton" action="#{uS.addBestellPosten()}"/><br/><br/>
         -->
         <table rules="rows" cellpadding="10" cellspacing="5">
             <tr><th>Produkt</th> <th>Anzahl</th> <th>Bestellen</th></tr>
             <tr>
                 <td>
-                    <h:selectOneMenu value="#{vmBestellung.produkt}" converter="pConverter">
-                        <f:selectItems value="#{vmIndex.getAllProdukt()}" var="c" itemLabel="#{c.name}" itemValue="#{c}"/>
+                    <h:selectOneMenu value="#{vmBestellung.id}" valueChangeListener="#{vmBestellung.valueChanged()}" onchange="submit()">
+                        <f:selectItems value="#{vmIndex.getAllProdukt()}" var="c" itemLabel="#{c.name}" itemValue="#{c.id}"/>
                     </h:selectOneMenu>
                 </td>
-                <td><h:outputText value="#{vmBestellung.produkt}"/></td>
-                <td><h:inputText value="#{vmBestellung.anzahl}"/></td>
+                <td><h:outputText value="#{vmBestellung.id}"/></td>
+                <td><h:inputText value="#{vmBestellung.anzahl}" /></td>
             </tr>
         </table>
         <h:commandButton value="Submit" type="submit" action="result"/>
