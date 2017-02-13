@@ -14,7 +14,8 @@ import javax.validation.constraints.Min;
 @SessionScoped
 public class UserSession implements Serializable{
     private Bestellung bestellung;
-    private boolean hide = true;
+    private boolean hideInput = true;
+    private boolean hideList = true;
     private Long  produktId;
     @Digits(integer=6, fraction=0)
     @Min(value=1, message="Der Wert muss größer als 1 sein!")
@@ -37,15 +38,24 @@ public class UserSession implements Serializable{
     public void setBestellung(Bestellung bestellung) {
         this.bestellung = bestellung;
     }
-    
-    public boolean isHide() {
-        return hide;
+
+    public boolean isHideInput() {
+        return hideInput;
     }
 
-    public void setHide(boolean hide) {
-        this.hide = hide;
+    public void setHideInput(boolean hideInput) {
+        this.hideInput = hideInput;
+    }
+
+    public boolean isHideList() {
+        return hideList;
+    }
+
+    public void setHideList(boolean hideList) {
+        this.hideList = hideList;
     }
     
+
     public Long getProduktId() {
         return produktId;
     }
@@ -62,8 +72,12 @@ public class UserSession implements Serializable{
         this.produktAnzahl = produktAnzahl;
     }
     
-    public void hideFalse(){
-        this.hide = false;
+    public void hideInputFalse(){
+        this.hideInput = false;
+    }
+    
+    public void hideListFalse(){
+        this.hideList = false;
     }
     
 }
