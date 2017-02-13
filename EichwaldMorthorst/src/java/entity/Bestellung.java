@@ -2,7 +2,7 @@
 package entity; 
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.HashSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -25,7 +26,7 @@ public class Bestellung implements Serializable {
     private Long id;
     private String kunde;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellung")
-    private Set<Bestellposten> bestellposten;
+    private HashSet<Bestellposten> bestellposten = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -43,7 +44,7 @@ public class Bestellung implements Serializable {
         this.kunde = kunde;
     }
 
-    public Set<Bestellposten> getBestellposten() {
+    public HashSet<Bestellposten> getBestellposten() {
         return bestellposten;
     }
 
@@ -56,7 +57,7 @@ public class Bestellung implements Serializable {
         return null;
     }
     
-    public void setBestellposten(Set<Bestellposten> bestellposten) {
+    public void setBestellposten(HashSet<Bestellposten> bestellposten) {
         this.bestellposten = bestellposten;
     }
     

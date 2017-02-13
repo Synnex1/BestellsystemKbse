@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <link rel="stylesheet" href="../Styles/styles.css" type="text/css"/>
+    <h:outputStylesheet name="css/styles.css"/>
     <title>Bestellsystem</title>
 </h:head>
 <h:body>
@@ -11,7 +11,7 @@
     <h:form>
         <h:commandButton class="buttonNavigation" value="Produktübersicht" action="/index.xhtml"/>
         <h:commandButton class="buttonNavigation" value="Bestellung" action="Views/bestellung.xhtml"></h:commandButton>
-        <h:commandButton class="buttonNavigation" value="Bestellungsbericht" action="/Views/bestellungsuebersicht.xhtml"/><br/><br/><br/>
+        <h:commandButton class="buttonNavigation" value="Bestellungsübersicht" action="/Views/bestellungsuebersicht.xhtml"/><br/><br/><br/>
     </h:form>
 
     <h:form>

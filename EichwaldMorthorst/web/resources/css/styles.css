@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'sports_night';
-    src: url('/SF_Sports_Night.ttf') format("truetype");
+    src: url('./SF_Sports_Night.ttf') format("truetype");
 }
 
 body {
@@ -111,6 +111,7 @@ select {
 
 table {
     width: 100%;
+    /*font-family: 'fraulein';*/
     font-size: 20px;
 }
 
@@ -135,7 +136,7 @@ tr:hover {
 }
 
 label {
-    font-family: 'grungerocker';
+    font-family: 'fraulein';
     font-size: 40px;
 }
 
