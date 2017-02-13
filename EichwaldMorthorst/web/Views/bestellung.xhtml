@@ -16,7 +16,7 @@
 
     <h:form>
         <h:outputLabel value="Kunde: "/>
-        <table class="#{(uS.hide)?'nothidden':'hidden'}">
+        <table class="#{(uS.hide) ? 'nothidden':'hidden'}">
             <tr>
                 <td><h:inputText value="#{uS.bestellKunde}"  required="true" requiredMessage="Kunde muss angegeben werden" /></td>
                 <td width="10%"><h:commandButton value="Speichern" class="button" action="submit">
