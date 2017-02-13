@@ -3,6 +3,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Bestellung implements Serializable {
     private Long id;
     private String kunde;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellung")
-    private HashSet<Bestellposten> bestellposten = new HashSet<>();
+    private Set<Bestellposten> bestellposten;
 
     public Long getId() {
         return id;
@@ -44,7 +45,7 @@ public class Bestellung implements Serializable {
         this.kunde = kunde;
     }
 
-    public HashSet<Bestellposten> getBestellposten() {
+    public Set<Bestellposten> getBestellposten() {
         return bestellposten;
     }
 
