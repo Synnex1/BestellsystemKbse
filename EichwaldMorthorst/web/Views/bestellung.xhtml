@@ -46,8 +46,8 @@
         <table>
             <h:outputLabel value="Warenkorb"/>
             <tr> <th>Produkt</th> <th>Anzahl</th> </tr>
-            <ui:repeat var="n" value="#{uS.bestellung}">    
-                <tr>#{c.name}</tr><tr>#{c.anzahl}</tr>
+            <ui:repeat var="b" value="#{uS.bestellung.bestellposten}">    
+                <tr>#{b.produkt.name}</tr><tr>#{b.anzahl}</tr>
             </ui:repeat>
         </table>
     </h:form>

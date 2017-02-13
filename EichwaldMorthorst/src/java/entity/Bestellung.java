@@ -4,6 +4,7 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Bestellung implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String kunde;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellung")
     private List<Bestellposten> bestellposten = new ArrayList<>();
 
     public Long getId() {
@@ -64,6 +65,7 @@ public class Bestellung implements Serializable {
         Bestellposten b = new Bestellposten();
         b.setProdukt(p);
         b.setAnzahl(anzahl);
+        b.setBestellung(this);
         this.bestellposten.add(b);
     }
     

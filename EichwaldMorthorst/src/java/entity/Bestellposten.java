@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -17,6 +18,8 @@ public class Bestellposten implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
+    private Bestellung bestellung;
+    @OneToOne
     private Produkt produkt;
     private int anzahl;
     
@@ -26,6 +29,14 @@ public class Bestellposten implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Bestellung getBestellung() {
+        return bestellung;
+    }
+
+    public void setBestellung(Bestellung bestellung) {
+        this.bestellung = bestellung;
     }
 
     public Produkt getProdukt() {
