@@ -15,25 +15,28 @@ import javax.faces.convert.FacesConverter;
 
 @FacesConverter("pConverter")
 public class ProduktConverter implements Converter {
-    private Produkt Produkt;
+    private Produkt produkt;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         
-        Produkt produkt = new Produkt();
+        produkt = new Produkt();
         value = value.trim();                           // "ID:" + id + "\\Name:" + name + "\\Anzahl:" + anzahl;
-        String backslashString = "\"";
-        value = value.concat(backslashString);
-        char backslash = '\'' ;
-        int index = value.indexOf(backslash);
+        String paragraphString = "§";
+        value = value.concat(paragraphString);
+        char paragraph = '§' ;
+        int index = value.indexOf(paragraph);
         String id = value.substring(3, index);
-        int index2 = value.indexOf(backslash, index+2);
+        int index2 = value.indexOf(paragraph, index+2);
         String name = value.substring(index+7, index2);
         index = index2 + 9;
-        index2 = value.indexOf(backslash, index);
+        index2 = value.indexOf(paragraph, index);
         String anzahl = value.substring(index, index2);
-        
-        produkt.setId(id);
+        Long longId = Long.parseLong(id, 10);
+        int anzahlInt = Integer.parseInt(anzahl);
+        produkt.setId(longId);
+        produkt.setName(name);
+        produkt.setAnzahl(anzahlInt);
         /*ctrl = (CategoryController) context.getApplication().getELResolver().getValue(
                 context.getELContext(), null, "categoryController");        
 

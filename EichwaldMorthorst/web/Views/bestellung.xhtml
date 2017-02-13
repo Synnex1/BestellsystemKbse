@@ -31,7 +31,7 @@
             <tr><th>Produkt</th> <th>Anzahl</th> <th>Bestellen</th></tr>
             <tr>
                 <td>
-                    <h:selectOneMenu value="#{vmBestellung.produkt}">
+                    <h:selectOneMenu value="#{vmBestellung.produkt}" converter="pConverter">
                         <f:selectItems value="#{vmIndex.getAllProdukt()}" var="c" itemLabel="#{c.name}" itemValue="#{c}"/>
                     </h:selectOneMenu>
                 </td>
