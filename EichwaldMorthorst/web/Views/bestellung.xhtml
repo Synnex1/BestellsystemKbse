@@ -15,22 +15,21 @@
     </h:form>
 
     <h:form>
-        <h:outputLabel value="Kunde: "/>
-        <table>
-            <tr class="#{(uS.hide) ? 'nothidden':'hidden'}">
-                <td><h:inputText value="#{uS.bestellKunde}"  required="true" requiredMessage="Kunde muss angegeben werden" /></td>
-                <td><h:commandButton value="Speichern" class="button" onclick="submit">
-                        <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
-                        <f:actionListener binding="#{uS.hideFalse()}"/>
-                    </h:commandButton>
-                </td><br/><br/>
-            </tr>
-        </table><br/>
+        <h:outputLabel value="Kunde: "/><br/>
+        <div class="#{(uS.hide) ? 'nothidden':'hidden'}">
+            <h:inputText value="#{uS.bestellKunde}"  required="true" requiredMessage="Kunde muss angegeben werden" />
+            <h:commandButton value="Speichern" class="button" onclick="submit">
+                <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
+                <f:actionListener binding="#{uS.hideFalse()}"/>
+            </h:commandButton>
+        </div>
+       
         <h:outputLabel value="#{uS.bestellKunde}" class="kunde"/><br/><br/>
     </h:form>
+    
     <h:form id="wrapper" class="#{(uS.hide)?'hidden':'nothidden'}">
         <table rules="rows" cellpadding="10" cellspacing="5" >
-            <tr><th>Produkt</th> <th>Bestellen</th></tr>
+            <tr><th>Produkt</th> <th width="12%">Stück</th> <th></th></tr>
             <tr>
                 <td>
                     <h:selectOneMenu value="#{uS.produktId}" valueChangeListener="#{vmBestellung.valueChanged()}" onchange="submit()">
@@ -38,8 +37,8 @@
                     </h:selectOneMenu>
                 </td>
                 
-                <td width="100px"><h:inputText value="#{uS.produktAnzahl}"/></td>
-                <td width="200px"><h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}"/></td>
+                <td width="12%"><h:inputText value="#{uS.produktAnzahl}"/></td>
+                <td width="40%"><h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}"/></td>
             </tr>
         </table><br/><br/>
         
@@ -49,7 +48,7 @@
             <tr> <th>Produkt</th> <th>Anzahl</th> </tr>
 
             <ui:repeat var="b" value="#{uS.bestellung.bestellposten}">    
-                <tr>#{b.produkt.name}</tr><tr>#{b.anzahl}</tr>
+                <tr><td>#{b.produkt.name}</td><td>#{b.anzahl}</td></tr>
 
             </ui:repeat>
         </table>

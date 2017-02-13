@@ -74,12 +74,6 @@ public class ViewModelIndex implements Serializable {
         return true;
     }
     
-    public void buyProdukt(long produktId, int anzahl){
-        if(checkIfExistEnough(produktId, anzahl) == true){
-            pc.findProdukt(produktId).setAnzahl(getAnzahl()-anzahl);
-        }
-    }
-    
     public void setBack(){
         
     }
