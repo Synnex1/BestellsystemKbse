@@ -52,6 +52,6 @@ public class Persistence {
     
     public void removeBestellposten(Long bestellposten_id) {
         Bestellposten b = em.find(Bestellposten.class, bestellposten_id);
-        em.remove(b);
+        remove(b);
     }
 }
