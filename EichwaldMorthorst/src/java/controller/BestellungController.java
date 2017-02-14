@@ -51,6 +51,9 @@ public class BestellungController {
         Produkt p = pc.findProdukt(produkt_id);
         if(p.getAnzahl() < anzahl) {
             return null;
+        }else {
+            p.setAnzahl(p.getAnzahl()-anzahl);
+            ps.merge(p);
         }
         
         for(Bestellung b : bestellungen) {

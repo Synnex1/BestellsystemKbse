@@ -64,5 +64,6 @@ public class ProduktController{
             }
         }
     }
-
+    
+    public boolean checkProduktCountConstraint(Long produkt_id, int buy_count)
 }
