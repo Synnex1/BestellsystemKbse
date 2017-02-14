@@ -83,7 +83,8 @@ public class ViewModelBestellung implements Serializable {
     }
     
     public void bestellPostenBearbeiten(Long bestellungId, Long bestellPostenId, int anzahl){
-        uS.setBestellung(updateBestellposten(Long bestellungId, Long bestellPostenId, int anzahl));
+        uS.setBestellung(bc.updateBestellposten(bestellungId, bestellPostenId, anzahl));
+        
     }
     
     public void bestellPostenLoeschen(Long bestellungId, Long bestellPostenId){
