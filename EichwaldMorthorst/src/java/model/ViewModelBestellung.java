@@ -91,8 +91,23 @@ public class ViewModelBestellung implements Serializable {
         uS.setBestellung(bc.deleteBestellposten(bestellungId, bestellPostenId));
     }
     
+    public void deleteBestellung(Long bestellungId){
+        bc.deleteBestellung(bestellungId);
+        uS.setBestellung(null);
+        uS.setBestellKunde(null);
+        uS.setProduktAnzahl(1);
+        uS.setProduktId(null);
+        
+    }
+    
+    public void setBestellPostenToEditId(Long bestellPostenId){
+        uS.setBestellPostenId(bestellPostenId);
+    }
+    
     public String deleteInView(Long bestellungId, Long bestellPostenId){
         bestellPostenLoeschen(bestellungId, bestellPostenId);
         return "/Views/bestellung.xhtml";
     }
+    
+    
 }

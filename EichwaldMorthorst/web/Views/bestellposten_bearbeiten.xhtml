@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:outputStylesheet name="css/styles.css"/>
     <title>Bestellsystem</title>
@@ -15,12 +16,15 @@
     
     <h:form>
         <table>
-            <tr><th>Produkt</th>Stück<th></th><th></th></tr>
-            <tr><td>#{uS.bestellung.getBestellposten(uS.produktId).getProdukt()}</td><td>#{uS.bestellung.getBestellposten(uS.produktId)}</td><td></td></tr>
-        </table>
-        <tr><td><h:outputText value="Anzahl ändern: "/></td>
+            <tr><th>Produkt</th><th>Stück</th><th></th></tr>
+            <tr><td>#{uS.bestellung.getBestellposten(uS.bestellPostenId).produkt.name}</td><td>#{uS.bestellung.getBestellposten(uS.bestellPostenId).produkt.anzahl}</td><td></td></tr>
+        </table><br/>
+        <tr><td><h:outputLabel value="Anzahl ändern: "/></td>
             <td><h:inputText  value="#{varNeueAnzahl}"/></td>
-            <td><h:commandButton class="button" value="Ändern" action="/View/bestellung.xhtml" onclick="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, b.id, varNeueAnzahl)}"/></td>
+            <td><h:commandButton class="button" value="Ändern" action="/Views/bestellung.xhtml">
+                    <f:actionListener binding="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, uS.bestellPostenId, varNeueAnzahl)}"/>
+                </h:commandButton>
+            </td>
         </tr>
 
     </h:form>

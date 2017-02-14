@@ -53,7 +53,7 @@
             <ui:repeat var="b" value="#{uS.bestellung.bestellposten}">    
                 <tr><td width="80%" >#{b.produkt.name}</td><td>#{b.anzahl}</td> 
                     <td class="tdpadding"><h:commandButton class="editButton" action="/Views/bestellposten_bearbeiten.xhtml">
-                            <f:actionListener binding="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, b.id, b.anzahl)}"/>
+                            <f:actionListener binding="#{vmBestellung.setBestellPostenToEditId(b.id)}"/>
                                           </h:commandButton></td>
                     <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.deleteInView(uS.bestellung.id, b.id)}">
                                           </h:commandButton>

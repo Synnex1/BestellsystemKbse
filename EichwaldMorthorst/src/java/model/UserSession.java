@@ -22,6 +22,15 @@ public class UserSession implements Serializable{
     @Max(value=10000, message="Es dürfen nicht mehr als 10000 Artikel auf einmal verkauft werden")
     private int produktAnzahl = 1;
     private String  bestellKunde; 
+    private Long bestellPostenId;
+
+    public Long getBestellPostenId() {
+        return bestellPostenId;
+    }
+
+    public void setBestellPostenId(Long bestellPostenId) {
+        this.bestellPostenId = bestellPostenId;
+    }
 
     public String getBestellKunde() {
         return bestellKunde;
