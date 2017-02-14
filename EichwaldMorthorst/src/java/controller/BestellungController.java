@@ -72,6 +72,7 @@ public class BestellungController {
     public void deleteBestellung(Long bestellung_id) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
+                ps.merge(b);
                 ps.remove(b);
             }
         }
