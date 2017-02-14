@@ -27,7 +27,7 @@ public class Bestellung implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String kunde;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Bestellposten> bestellposten;
     
     public Bestellung() {
