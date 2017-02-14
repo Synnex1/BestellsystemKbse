@@ -55,7 +55,9 @@
                     <td class="tdpadding"><h:commandButton class="editButton" action="/Views/bestellposten_bearbeiten.xhtml">
                             <f:actionListener binding="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, b.id, b.anzahl)}"/>
                                           </h:commandButton></td>
-                    <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.bestellPostenLoeschen(uS.bestellung.id, b.id)}"/></td>
+                    <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.deleteInView(uS.bestellung.id, b.id)}">
+                                          </h:commandButton>
+                    </td>
                 </tr><br/>
             </ui:repeat>
         </table><br/>
