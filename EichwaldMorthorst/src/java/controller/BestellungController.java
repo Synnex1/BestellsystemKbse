@@ -58,7 +58,9 @@ public class BestellungController {
         
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                b.addBestellposten(p, anzahl);
+                Bestellposten bp = new Bestellposten(p, anzahl);
+                ps.persist(bp);
+                b.addBestellposten(bp);
                 ps.merge(b);
                 return b;
             }

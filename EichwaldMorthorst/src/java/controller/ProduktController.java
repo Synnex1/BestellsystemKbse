@@ -64,6 +64,13 @@ public class ProduktController{
             }
         }
     }
-    
-    public boolean checkProduktCountConstraint(Long produkt_id, int buy_count)
+   /* 
+    public Produkt checkProduktCountConstraint(Long produkt_id, int buy_count) {
+        for(Produkt p : this.produkte) {
+            if(p.getId().compareTo(produkt_id) == 0) {
+                
+            }
+        }
+    }
+*/
 }

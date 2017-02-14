@@ -27,7 +27,7 @@ public class Bestellung implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String kunde;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Bestellposten> bestellposten;
     
     public Bestellung() {
@@ -67,8 +67,7 @@ public class Bestellung implements Serializable {
         this.bestellposten = bestellposten;
     }
     
-    public void addBestellposten(Produkt p, int anzahl) {
-        Bestellposten b = new Bestellposten(p, anzahl);
+    public void addBestellposten(Bestellposten b) {
         this.bestellposten.add(b);
     }
     
