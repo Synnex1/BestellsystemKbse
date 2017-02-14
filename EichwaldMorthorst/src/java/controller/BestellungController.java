@@ -69,6 +69,14 @@ public class BestellungController {
         return b;
     }
     
+    public void deleteBestellung(Long bestellung_id) {
+        for(Bestellung b : this.bestellungen) {
+            if(b.getId().compareTo(bestellung_id) == 0) {
+                ps.remove(b);
+            }
+        }
+    }
+    
     /**
      * Fuegt einer vorhanden Bestellung einen neuen Bestellposten hinzu. Dabei wird ueberprüft ob die zu bestellende Anzahl des Produktes 
      * an Bestand vorhanden ist. Falls Korrekt wird diese um die zu bestellende Anzahl vermindert. 
