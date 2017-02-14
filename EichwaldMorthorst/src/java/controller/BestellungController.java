@@ -69,6 +69,11 @@ public class BestellungController {
         return b;
     }
     
+    /**
+     * Loescht eine Bestellung und addiert die Bestellmenge jedes Produktes auf den Bestand auf.
+     *
+     * @param bestellung_id Id der Bestellung, die geloescht werden soll
+     */
     public void deleteBestellung(Long bestellung_id) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
@@ -166,10 +171,11 @@ public class BestellungController {
     }
     
     /**
+     * Löscht einen Bestellposten aus einer Bestellung
      *
-     * @param bestellung_id
-     * @param bestellposten_id
-     * @return
+     * @param bestellung_id Id der Bestellung aus der ein Bestellposten geloescht werden soll
+     * @param bestellposten_id Id des Bestellpostens, welcher geloescht werden soll
+     * @return 
      */
     public Bestellung deleteBestellposten(Long bestellung_id, Long bestellposten_id) {
         for(Bestellung b : this.bestellungen) {
