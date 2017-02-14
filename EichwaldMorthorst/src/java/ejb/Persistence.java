@@ -50,7 +50,7 @@ public class Persistence {
         return em.createNamedQuery("Bestellung.findAll", Bestellung.class).getResultList();
     }
     
-    public void removeBestellposten(Long bestellposten_id) {
+    public void removeBestellposten(long bestellposten_id) {
         Bestellposten b = em.find(Bestellposten.class, bestellposten_id);
         remove(b);
     }
