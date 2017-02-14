@@ -14,8 +14,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-
-
+/**
+ * Die Entitaet Bestellung enthaelt den Namen eines Kunden, sowie eine Liste von Bestellposten. 
+ *
+ * @author Mike Morthorst
+ */
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Bestellung.findAll", query = "SELECT b FROM Bestellung b ORDER BY b.id"),
@@ -30,30 +33,64 @@ public class Bestellung implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "bestellung")
     private List<Bestellposten> bestellposten;
     
+    /**
+     * Standartkonstruktor
+     */
     public Bestellung() {
         this.bestellposten = new ArrayList<>();
     }
 
+    /**
+     * Id-Getter
+     *
+     * @return Id der Bestellung.
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Id-Setter
+     *
+     * @param id Id, die gesetzt werden soll.
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Kunde-Getter
+     *
+     * @return Kundenname.
+     */
     public String getKunde() {
         return kunde;
     }
 
+    /**
+     * Kunde-Setter
+     *
+     * @param kunde Kundenname, der gesetzt werden soll.
+     */
     public void setKunde(String kunde) {
         this.kunde = kunde;
     }
 
+    /**
+     * Bestellposten-Getter
+     *  
+     * @return Liste der Bestellposten.
+     */
     public List<Bestellposten> getBestellposten() {
         return bestellposten;
     }
 
+    /**
+     * Gibt den zu der uebergebenen Id identifizierten Bestellposten zurueck.
+     *
+     * @param id Id des Bestellpostens.
+     * @return Der gefundene Bestellposten.
+     */
     public Bestellposten getBestellposten(Long id){
         for(Bestellposten bp : bestellposten){
             if(bp.getId().compareTo(id) == 0){
@@ -63,14 +100,29 @@ public class Bestellung implements Serializable {
         return null;
     }
     
+    /**
+     * Bestellposten-Setter
+     *
+     * @param bestellposten Liste mit Bestellposten die gesetzt werden soll.
+     */
     public void setBestellposten(List<Bestellposten> bestellposten) {
         this.bestellposten = bestellposten;
     }
     
-    public void addBestellposten(Bestellposten b) {
-        this.bestellposten.add(b);
+    /**
+     * Fuegt einen neuen Bestellposten hinzu.
+     *
+     * @param bestellposten Bestellposten, der zur Liste hinzugefuegt werden soll.
+     */
+    public void addBestellposten(Bestellposten bestellposten) {
+        this.bestellposten.add(bestellposten);
     }
     
+    /**
+     * Loescht einen Bestellposten aus der Liste.
+     *
+     * @param bestellposten_id Id des zu loeschenden Bestellpostens.
+     */
     public void deleteBestellposten(Long bestellposten_id){
         for(Bestellposten bp : bestellposten){
             if(bp.getId().compareTo(id) == 0){

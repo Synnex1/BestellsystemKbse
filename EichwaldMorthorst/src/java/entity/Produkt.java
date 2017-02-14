@@ -9,7 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-
+/**
+ * Die Entitaet Produkt enthaelt eine Bezeichnung und eine Anzahl, die den Bestand widerspiegelt.
+ *
+ * @author Mike Morthorst
+ */
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Produkt.findAll", query = "SELECT p FROM Produkt p ORDER BY p.id"),
@@ -23,26 +27,56 @@ public class Produkt implements Serializable {
     private String name;
     private int anzahl;
     
+    /**
+     * Id-Getter
+     *
+     * @return Id des Produktes.
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Id-Setter
+     *
+     * @param id Id die gesetzt werden soll.
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Name-Getter
+     *
+     * @return Bezeichnung des Produktes.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Name-Setter
+     *
+     * @param name Bezeichnung die gesetzt werden soll.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Anzahl-Getter
+     *
+     * @return Bestand des Produktes.
+     */
     public int getAnzahl() {
         return anzahl;
     }
 
+    /**
+     * Anzahl-Setter
+     *
+     * @param anzahl Bestandsmenge, die gesetzt werden soll.
+     */
     public void setAnzahl(int anzahl) {
         this.anzahl = anzahl;
     }
