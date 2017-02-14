@@ -2,8 +2,8 @@
 package entity; 
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,8 +27,8 @@ public class Bestellung implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String kunde;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellung", fetch = FetchType.EAGER)
-    private Set<Bestellposten> bestellposten;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Bestellposten> bestellposten = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -46,7 +46,7 @@ public class Bestellung implements Serializable {
         this.kunde = kunde;
     }
 
-    public Set<Bestellposten> getBestellposten() {
+    public List<Bestellposten> getBestellposten() {
         return bestellposten;
     }
 
@@ -59,7 +59,7 @@ public class Bestellung implements Serializable {
         return null;
     }
     
-    public void setBestellposten(HashSet<Bestellposten> bestellposten) {
+    public void setBestellposten(List<Bestellposten> bestellposten) {
         this.bestellposten = bestellposten;
     }
     
@@ -67,7 +67,6 @@ public class Bestellung implements Serializable {
         Bestellposten b = new Bestellposten();
         b.setProdukt(p);
         b.setAnzahl(anzahl);
-        b.setBestellung(this);
         this.bestellposten.add(b);
     }
     
