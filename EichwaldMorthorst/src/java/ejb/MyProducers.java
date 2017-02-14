@@ -10,8 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
- * @author Mike
+ * Producer für den EntityManager.
+ * 
+ * @author Mike Morthorst
  */
 public class MyProducers {
     @Produces
