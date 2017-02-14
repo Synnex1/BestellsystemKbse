@@ -44,6 +44,7 @@ public class BestellungController {
      * @return Eine Liste aller Bestellungen
      */
     public List<Bestellung> getAllBestellung() {
+        this.bestellungen = allElements();
         return this.bestellungen;
     }
     
@@ -51,7 +52,7 @@ public class BestellungController {
      * Erstellt eine neue Bestellung und fuegt den Namen des Kunden hinzu.
      * Anschließend wird die Bestellung in die Datenbank geschrieben und dem Frontend zurueckgegeben.
      *
-     * @param kunde - Der name des Kunden
+     * @param kunde Der name des Kunden
      * @return Die neu angelegte Bestellung
      */
     public Bestellung newBestellung(String kunde) {
@@ -86,11 +87,11 @@ public class BestellungController {
     
     /**
      * Fuegt einer vorhanden Bestellung einen neuen Bestellposten hinzu. Dabei wird ueberprüft ob die zu bestellende Anzahl des Produktes 
-     * an Bestand vorhanden ist. Falls Korrekt wird diese um die zu bestellende Anzahl vermindert. 
+     * an Bestand vorhanden ist. Falls Korrekt, wird diese um die zu bestellende Anzahl vermindert. 
      *
-     * @param bestellung_id - Id der Bestellung, der ein Bestellposten hinzugefuegt werden soll.
-     * @param produkt_id - Id des Produktes, das bestellt werden soll.
-     * @param anzahl - Anzahl des Produktes, die bestellt werden soll.
+     * @param bestellung_id Id der Bestellung, der ein Bestellposten hinzugefuegt werden soll.
+     * @param produkt_id Id des Produktes, das bestellt werden soll.
+     * @param anzahl Anzahl des Produktes, die bestellt werden soll.
      * @return Die veraenderte Bestellung
      */
     public Bestellung addBestellpostenToBestellung(Long bestellung_id, Long produkt_id, int anzahl) {
@@ -114,8 +115,8 @@ public class BestellungController {
     /**
      * Aendert den Kundennamen einer Bestellung.
      *
-     * @param bestellung_id - Id der Bestellung, dessen Kunde geaendert werden soll.
-     * @param kunde - Name des neuen Kunden.
+     * @param bestellung_id Id der Bestellung, dessen Kunde geaendert werden soll.
+     * @param kunde Name des neuen Kunden.
      * @return Die veraenderte Bestellung.
      */
     public Bestellung updateBestellung(Long bestellung_id, String kunde) {
@@ -130,12 +131,17 @@ public class BestellungController {
     }
     
     /**
-     * Aendert einen Bestellposten einer Bestellung. 
+     * Aendert einen Bestellposten einer Bestellung. Dabei wird unterschieden zwischen zwei Faellen.
+     * 1.Fall: Die neue Anzahl zu bestellender Produkte ist kleiner als die bisherige Bestellmenge. Somit wird die Differenz 
+     *         dieser beiden Werte, auf den momentanen Bestand addiert.
+     * 2.Fall: Die neue Anzahl zu bestellender Produkte ist groesser als die bisherige Bestellmenge. Somit wird der Betrag der Differenz
+     *         der beiden Werte berechnet. Dann wird ueberprueft ob der momentane Bestand größer ist als die Differenz. Falls dem so ist
+     *         wird die Differenz vom Bestand abgezogen. Andernfalls wird null zurueckgegeben.
      *
-     * @param bestellung_id
-     * @param bestellposten_id
-     * @param neueAnzahl
-     * @return
+     * @param bestellung_id Id der Bestellung dessen Bestellposten veraendert werden soll.
+     * @param bestellposten_id Id des Bestellpostens, welcher veraendert werden soll.
+     * @param neueAnzahl Die neue Bestellmenge
+     * @return Die veraenderte Bestellung falls Bestand ausreichend. Sonst Null.
      */
     public Bestellung updateBestellposten(Long bestellung_id, Long bestellposten_id, int neueAnzahl) {
         for(Bestellung b : this.bestellungen) {
