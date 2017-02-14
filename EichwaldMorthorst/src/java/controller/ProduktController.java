@@ -65,5 +65,7 @@ public class ProduktController{
         }
     }
     
-    public boolean checkProduktCountConstraint(Long produkt_id, int buy_count)
+    public boolean checkProduktCountConstraint(Long produkt_id, int buy_count){
+        return false;
+    }
 }

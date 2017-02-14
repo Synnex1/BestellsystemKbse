@@ -52,7 +52,12 @@
             <tr> <th width="80%" >Produkt</th> <th>Stück</th> <th></th> <th></th> </tr><br/>
 
             <ui:repeat var="b" value="#{uS.bestellung.bestellposten}">    
-                <tr><td width="80%" >#{b.produkt.name}</td><td>#{b.anzahl}</td> <td class="tdpadding"><h:commandButton class="editButton"/></td><td class="tdpadding"><h:commandButton class="deleteButton"/></td></tr><br/>
+                <tr><td width="80%" >#{b.produkt.name}</td><td>#{b.anzahl}</td> 
+                    <td class="tdpadding"><h:commandButton class="editButton" action="/Views/bestellposten_bearbeiten.xhtml">
+                            <f:actionListener binding="vmBestellung.bestellPostenBearbeiten(#{uS.bestellung.id},#{b.id},#{b.anzahl})"/>
+                                          </h:commandButton></td>
+                    <td class="tdpadding"><h:commandButton class="deleteButton"/></td>
+                </tr><br/>
             </ui:repeat>
         </table><br/>
         <h:commandButton class="button" value="Bestellen"/>
