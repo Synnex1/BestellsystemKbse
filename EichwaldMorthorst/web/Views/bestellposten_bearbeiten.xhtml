@@ -10,19 +10,19 @@
     <h:outputLabel class="ueberschrift">Produktanzahl Aendern</h:outputLabel><br/>    
     <h:form>
         <table>
-            <tr><th>Produkt</th><th>Stück</th><th></th></tr>
+            <tr><th>Produkt</th><th>Stück auf Lager</th><th></th></tr>
             <tr><td>#{uS.bestellung.getBestellposten(uS.bestellPostenId).produkt.name}</td><td>#{uS.bestellung.getBestellposten(uS.bestellPostenId).produkt.anzahl}</td><td></td></tr>
         </table><br/>
-        <tr><td><h:outputLabel value="Anzahl ändern: "/></td>
-            <td><h:inputText  value="#{varNeueAnzahl}"/></td>
+        <tr><td><h:outputLabel value="Anzahl in den Warenkorb legen: "/></td>
+            <td><h:inputText  value="#{uS.produktAnzahl}"/></td>
             <td><h:commandButton class="button" value="Ändern" action="/Views/bestellung.xhtml">
-                    <f:actionListener binding="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, uS.bestellPostenId, varNeueAnzahl)}"/>
+                    <f:actionListener binding="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, uS.bestellPostenId, uS.produktAnzahl)}"/>
                 </h:commandButton>
             </td>
             <td><h:commandButton class="button" value="Abbrechen" action="/Views/bestellung.xhtml"/></td>
         </tr>
 
-    </h:form>
+    </h:form><br/><br/>
 </h:body>
 
 </html>

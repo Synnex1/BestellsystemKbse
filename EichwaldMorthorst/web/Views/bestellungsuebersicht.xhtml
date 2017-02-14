@@ -14,16 +14,16 @@
     </h:form>
     
     <h:form>
-        <ui:repeat var="c" value="hier muss die Liste aller Bestellungen rein">
-            <h:outputLabel value="hier muss der Kundenname der Bestellung rein"/>
+        <ui:repeat var="c" value="#{vmBestellung.allBestellungen}">
+            <h:outputLabel value="#{c.kunde}"/>
             <table>
                 <tr><th>Produkt</th><th>Anzahl</th></tr>
-                <ui:repeat var="d" value="hier muss die Liste der Bestellposten rein">
-                    <tr><td>Produktname</td><td>Anzahl</td></tr>
+                <ui:repeat var="d" value="#{c.bestellposten}">
+                    <tr><td>#{d.produkt.name}</td><td>#{d.produkt.anzahl}</td></tr>
                 </ui:repeat>
             </table>
         </ui:repeat>
-    </h:form>
+    </h:form><br/>
 </h:body>
 
 </html>

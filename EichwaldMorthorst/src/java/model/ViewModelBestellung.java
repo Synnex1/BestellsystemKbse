@@ -4,7 +4,6 @@ import controller.BestellungController;
 import controller.ProduktController;
 import java.io.Serializable;
 import javax.inject.Named;
-import entity.Produkt;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.Digits;
@@ -12,6 +11,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import entity.Bestellung;
+import java.util.List;
 
 @Named(value = "vmBestellung")
 @RequestScoped
@@ -72,19 +72,20 @@ public class ViewModelBestellung implements Serializable {
         return true;
     }
     
-    
-    
     public void newKunde(String kunde){
         uS.setBestellung(bc.newBestellung(kunde));
     }
     
     public void zumWarenkorbZufuegen(Long bestellId, Long produktId, int produktAnzahl){
-        uS.setBestellung(bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl));
+        Bestellung b = bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl);
+        if(b != null){
+        uS.setBestellung(b);
+        }
     }
     
     public void bestellPostenBearbeiten(Long bestellungId, Long bestellPostenId, int anzahl){
         uS.setBestellung(bc.updateBestellposten(bestellungId, bestellPostenId, anzahl));
-        
+        uS.setProduktAnzahl(1);
     }
     
     public void bestellPostenLoeschen(Long bestellungId, Long bestellPostenId){
@@ -97,6 +98,8 @@ public class ViewModelBestellung implements Serializable {
         uS.setBestellKunde(null);
         uS.setProduktAnzahl(1);
         uS.setProduktId(null);
+        uS.setHideInput(true);
+        uS.setHideList(true);
     }
     
     public void setBestellPostenToEditId(Long bestellPostenId){
@@ -108,5 +111,7 @@ public class ViewModelBestellung implements Serializable {
         return "/Views/bestellung.xhtml";
     }
     
-    
+    public List<Bestellung> getAllBestellungen(){
+        return bc.getAllBestellung();
+    }
 }
