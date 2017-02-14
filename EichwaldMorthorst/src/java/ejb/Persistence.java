@@ -5,6 +5,7 @@
  */
 package ejb;
 
+import entity.Bestellposten;
 import entity.Bestellung;
 import entity.Produkt;
 import java.util.List;
@@ -47,5 +48,10 @@ public class Persistence {
     
     public List<Bestellung> findAllBestellung() {
         return em.createNamedQuery("Bestellung.findAll", Bestellung.class).getResultList();
-    }    
+    }
+    
+    public void removeBestellposten(Long bestellposten_id) {
+        Bestellposten b = em.find(Bestellposten.class, bestellposten_id);
+        em.remove(b);
+    }
 }
