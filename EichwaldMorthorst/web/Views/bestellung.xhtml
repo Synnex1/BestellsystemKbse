@@ -39,7 +39,6 @@
                 
                 <td width="12%"><h:inputText value="#{uS.produktAnzahl}"/></td>
                 <td width="40%"><h:commandButton class="button" value="zum Warenkorb hinzufügen" action="#{vmBestellung.zumWarenkorbZufuegen(uS.bestellung.id, uS.produktId, uS.produktAnzahl)}">
-                                    <!--<f:actionListener binding="#{vmBestellung.checkIfExistEnough(uS.produktId, uS.produktAnzahl)}"/>-->
                                     <f:actionListener binding="#{uS.hideListFalse()}"/>
                                 </h:commandButton>
                 </td>
@@ -56,7 +55,7 @@
                     <td class="tdpadding"><h:commandButton class="editButton" action="/Views/bestellposten_bearbeiten.xhtml">
                             <f:actionListener binding="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, b.id, b.anzahl)}"/>
                                           </h:commandButton></td>
-                    <td class="tdpadding"><h:commandButton class="deleteButton" onclick="#{vmBestellung.bestellPostenLoeschen(uS.bestellung.id, b.id)}"/></td>
+                    <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.bestellPostenLoeschen(uS.bestellung.id, b.id)}"/></td>
                 </tr><br/>
             </ui:repeat>
         </table><br/>

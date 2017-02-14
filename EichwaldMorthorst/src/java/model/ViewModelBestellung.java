@@ -79,7 +79,7 @@ public class ViewModelBestellung implements Serializable {
     }
     
     public void zumWarenkorbZufuegen(Long bestellId, Long produktId, int produktAnzahl){
-        bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl);
+        uS.setBestellung(bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl));
     }
     
     public void bestellPostenBearbeiten(Long bestellungId, Long bestellPostenId, int anzahl){
