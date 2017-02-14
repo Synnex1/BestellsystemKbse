@@ -153,9 +153,9 @@ public class BestellungController {
      */
     public Bestellung deleteBestellposten(Long bestellung_id, Long bestellposten_id) {
         for(Bestellung b : this.bestellungen) {
-            if(bestellposten_id != null && b.getId().compareTo(bestellung_id) == 0) {
+            if(b.getId().compareTo(bestellung_id) == 0) {
                 ps.removeBestellposten(bestellposten_id);
-                this.bestellungen = allElements();
+                b.deleteBestellposten(bestellung_id);
                 return b;
             }
         }
