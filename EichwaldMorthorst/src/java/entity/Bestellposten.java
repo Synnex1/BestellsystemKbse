@@ -18,6 +18,8 @@ public class Bestellposten implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
+    private Bestellung bestellung;
+    @ManyToOne
     private Produkt produkt;
     private int anzahl;
     
@@ -25,9 +27,10 @@ public class Bestellposten implements Serializable {
         
     }
     
-    public Bestellposten(Produkt p, int anzahl) {
+    public Bestellposten(Produkt p, int anzahl, Bestellung b) {
         this.produkt = p;
         this.anzahl = anzahl;
+        this.bestellung = b;
     }
     
     public Long getId() {

@@ -86,7 +86,7 @@ public class BestellungController {
         
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                Bestellposten bp = new Bestellposten(p, anzahl);
+                Bestellposten bp = new Bestellposten(p, anzahl, b);
                 ps.persist(bp);
                 b.addBestellposten(bp);
                 ps.merge(b);
@@ -154,9 +154,8 @@ public class BestellungController {
     public Bestellung deleteBestellposten(Long bestellung_id, Long bestellposten_id) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                b.deleteBestellposten(bestellposten_id);
-                ps.merge(b);
                 ps.removeBestellposten(bestellposten_id);
+                this.bestellungen = allElements();
                 return b;
             }
         }
