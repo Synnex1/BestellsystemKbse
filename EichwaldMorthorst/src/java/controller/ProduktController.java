@@ -65,14 +65,19 @@ public class ProduktController{
         }
     }
 
-   /* 
     public Produkt checkProduktCountConstraint(Long produkt_id, int buy_count) {
         for(Produkt p : this.produkte) {
             if(p.getId().compareTo(produkt_id) == 0) {
-                
+                if(p.getAnzahl() < buy_count) {
+                    return null;
+                } else {
+                    p.setAnzahl(p.getAnzahl() - buy_count);
+                    ps.merge(p);
+                    return p;
+                }
             }
         }
+        return null;
     }
-*/
 }
 

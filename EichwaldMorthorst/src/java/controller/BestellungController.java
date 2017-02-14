@@ -48,13 +48,7 @@ public class BestellungController {
     }
     
     public Bestellung addBestellpostenToBestellung(Long bestellung_id, Long produkt_id, int anzahl) {
-        Produkt p = pc.findProdukt(produkt_id);
-        if(p.getAnzahl() < anzahl) {
-            return null;
-        }else {
-            p.setAnzahl(p.getAnzahl()-anzahl);
-            ps.merge(p);
-        }
+        Produkt p = pc.checkProduktCountConstraint(produkt_id, anzahl);
         
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
@@ -72,7 +66,7 @@ public class BestellungController {
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
                 b.setKunde(kunde);
-                ps.persist(b);
+                ps.merge(b);
                 return b;
             }
         }
