@@ -10,7 +10,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * Der BestellungsController 
+ * Der BestellungsController besitzt eine Liste aller in der Datenbank vorhandenen Bestellungen und verwaltet diese.
+ * Er ist als Singleton umgesetzt, um somit eine zentrale Zugriffsstelle fuer Bestellungen zu bieten.
  *
  * @author Mike
  */
@@ -24,7 +25,8 @@ public class BestellungController {
     private Bestellung bestellung;
     
     /**
-     *
+     * Wird ausgefuehrt nachdem die Injection der Persistenz und des ProduktControllers erfolgt sind.
+     * Erstellt eine neue Bestellung zum bearbeiten und fuellt die Bestellungsliste mit allen Bestellungen aus der Datenbank 
      */
     @PostConstruct
     public void init() {
@@ -37,17 +39,20 @@ public class BestellungController {
     }
     
     /**
+     * Gibt die Liste der Bestellungen zurueck.
      *
-     * @return
+     * @return Eine Liste aller Bestellungen
      */
     public List<Bestellung> getAllBestellung() {
         return this.bestellungen;
     }
     
     /**
+     * Erstellt eine neue Bestellung und fuegt den Namen des Kunden hinzu.
+     * Anschließend wird die Bestellung in die Datenbank geschrieben und dem Frontend zurueckgegeben.
      *
-     * @param kunde
-     * @return
+     * @param kunde - Der name des Kunden
+     * @return Die neu angelegte Bestellung
      */
     public Bestellung newBestellung(String kunde) {
         this.bestellung.setKunde(kunde);
@@ -65,11 +70,13 @@ public class BestellungController {
     }
     
     /**
+     * Fuegt einer vorhanden Bestellung einen neuen Bestellposten hinzu. Dabei wird ueberprüft ob die zu bestellende Anzahl des Produktes 
+     * an Bestand vorhanden ist. Falls Korrekt wird diese um die zu bestellende Anzahl vermindert. 
      *
-     * @param bestellung_id
-     * @param produkt_id
-     * @param anzahl
-     * @return
+     * @param bestellung_id - Id der Bestellung, der ein Bestellposten hinzugefuegt werden soll.
+     * @param produkt_id - Id des Produktes, das bestellt werden soll.
+     * @param anzahl - Anzahl des Produktes, die bestellt werden soll.
+     * @return Die veraenderte Bestellung
      */
     public Bestellung addBestellpostenToBestellung(Long bestellung_id, Long produkt_id, int anzahl) {
         Produkt p = pc.checkProduktCountConstraint(produkt_id, anzahl);
@@ -90,10 +97,11 @@ public class BestellungController {
     }
     
     /**
+     * Aendert den Kundennamen einer Bestellung.
      *
-     * @param bestellung_id
-     * @param kunde
-     * @return
+     * @param bestellung_id - Id der Bestellung, dessen Kunde geaendert werden soll.
+     * @param kunde - Name des neuen Kunden.
+     * @return Die veraenderte Bestellung.
      */
     public Bestellung updateBestellung(Long bestellung_id, String kunde) {
         for(Bestellung b : bestellungen) {
@@ -107,6 +115,7 @@ public class BestellungController {
     }
     
     /**
+     * Aendert einen Bestellposten einer Bestellung. 
      *
      * @param bestellung_id
      * @param bestellposten_id
@@ -145,8 +154,8 @@ public class BestellungController {
     public Bestellung deleteBestellposten(Long bestellung_id, Long bestellposten_id) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                b.deleteBestellposten(bestellposten_id);
                 ps.remove(b.getBestellposten(bestellposten_id));
+                b.deleteBestellposten(bestellposten_id);
                 return b;
             }
         }
