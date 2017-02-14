@@ -174,3 +174,8 @@ label {
     text-align: right;
     padding: 0px 10px;
 }
+
+#erfolgreiche_bestellung {
+    margin-top: 30%;
+    color: #44b345;
+}

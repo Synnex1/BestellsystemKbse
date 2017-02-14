@@ -44,7 +44,6 @@ public class BestellungController {
      * @return Eine Liste aller Bestellungen
      */
     public List<Bestellung> getAllBestellung() {
-        this.bestellungen = allElements();
         return this.bestellungen;
     }
     

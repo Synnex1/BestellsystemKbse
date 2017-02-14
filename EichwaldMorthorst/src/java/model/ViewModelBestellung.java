@@ -95,23 +95,36 @@ public class ViewModelBestellung implements Serializable {
     public void deleteBestellung(Long bestellungId){
         bc.deleteBestellung(bestellungId);
         uS.setBestellung(null);
-        uS.setBestellKunde(null);
+        uS.setBestellPostenId(null);
         uS.setProduktAnzahl(1);
         uS.setProduktId(null);
         uS.setHideInput(true);
         uS.setHideList(true);
+        uS.setBestellKunde(null);
+    }
+    
+    public String bestellen(){
+        if(uS.getBestellung().getBestellposten().isEmpty()){
+            return null;
+        } else{
+        uS.setBestellKunde(null);
+        uS.setBestellPostenId(null);
+        uS.setHideInput(true);
+        uS.setHideList(true);
+        uS.setProduktAnzahl(1);
+        uS.setProduktId(null);
+        uS.setBestellung(null);
+        return "/Views/erfolgreiche_bestellung.xhtml";
+        }
     }
     
     public void setBestellPostenToEditId(Long bestellPostenId){
         uS.setBestellPostenId(bestellPostenId);
     }
     
-    public String deleteInView(Long bestellungId, Long bestellPostenId){
-        bestellPostenLoeschen(bestellungId, bestellPostenId);
-        return "/Views/bestellung.xhtml";
-    }
-    
     public List<Bestellung> getAllBestellungen(){
         return bc.getAllBestellung();
     }
+
+    
 }

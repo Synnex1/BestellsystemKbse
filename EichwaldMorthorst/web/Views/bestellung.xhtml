@@ -55,13 +55,13 @@
                     <td class="tdpadding"><h:commandButton class="editButton" action="/Views/bestellposten_bearbeiten.xhtml">
                             <f:actionListener binding="#{vmBestellung.setBestellPostenToEditId(b.id)}"/>
                                           </h:commandButton></td>
-                    <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.deleteInView(uS.bestellung.id, b.id)}">
+                    <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.bestellPostenLoeschen(uS.bestellung.id, b.id)}">
                                           </h:commandButton>
                     </td>
                 </tr><br/>
             </ui:repeat>
         </table><br/>
-        <h:commandButton class="button" value="Bestellen"/>
+        <h:commandButton class="button" value="Bestellen" action="#{vmBestellung.bestellen()}"/>
         <h:commandButton class="button" value="Abbrechen" action="#{vmBestellung.deleteBestellung(uS.bestellung.id)}"/><br/>
     </h:form>
 </h:body>
