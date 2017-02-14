@@ -43,7 +43,7 @@ public class BestellungController {
         if(p.getAnzahl() < anzahl) {
             return null;
         }
-        
+        this.bestellungen = allElements();
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
                 b.addBestellposten(p, anzahl);
