@@ -45,20 +45,18 @@
                 </td>
             </tr>
         </table><br/><br/>
-        
-        
-        <table class="#{(uS.hideList)?'hidden':'nothidden'}">
-            <h:outputLabel value="Warenkorb"/>
-            <tr> <th>Produkt</th> <th>Anzahl</th> </tr>
+    </h:form>
+    <h:form class="#{(uS.hideList)?'hidden':'nothidden'}">
+        <h:outputLabel value="Warenkorb"/>
+        <table >
+            <tr> <th width="80%" >Produkt</th> <th>Stück</th> <th></th> <th></th> </tr><br/>
 
             <ui:repeat var="b" value="#{uS.bestellung.bestellposten}">    
-                <tr><td>#{b.produkt.name}</td><td>#{b.anzahl}</td></tr>
-
+                <tr><td width="80%" >#{b.produkt.name}</td><td>#{b.anzahl}</td> <td class="tdpadding"><h:commandButton class="editButton"/></td><td class="tdpadding"><h:commandButton class="deleteButton"/></td></tr><br/>
             </ui:repeat>
-        </table>
-    </h:form>
-    <h:form>
-        
+        </table><br/>
+        <h:commandButton class="button" value="Bestellen"/>
+        <h:commandButton class="button" value="Abbrechen"/><br/>
     </h:form>
 </h:body>
 

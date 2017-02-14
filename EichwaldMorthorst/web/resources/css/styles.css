@@ -69,6 +69,7 @@ table {
     border: none;
     height: 43px;
     width: 43px;
+    padding-left: 50%;
 }
 
 .deleteButton:hover {
@@ -95,6 +96,16 @@ table {
     border: none;
     width: 30px;
     height: 30px;
+    padding-left: 10px;
+}
+
+.editButton:hover {
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
 }
 
 input[type=text],
@@ -157,4 +168,9 @@ label {
     text-transform: uppercase;
     color: blue;
     font-family: 'grungerocker';
+}
+
+.tdpadding {
+    text-align: right;
+    padding: 0px 10px;
 }

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <h:outputStylesheet name="css/styles.css"/>
+    <title>Bestellsystem</title>
+</h:head>
+<h:body>
+    <h:outputLabel class="ueberschrift">Bestellungsuebersicht</h:outputLabel><br/>
+    <h:form>
+        <h:commandButton class="buttonNavigation" value="Produktübersicht" action="/index.xhtml"/>
+        <h:commandButton class="buttonNavigation" value="Bestellung" action="/Views/bestellung.xhtml"/>
+        <h:commandButton class="buttonNavigation" value="Bestellungsübersicht" action="/Views/bestellungsuebersicht.xhtml"/><br/><br/><br/>
+    </h:form>
+    
+    <h:form>
+        <table>
+            <tr><th>Produkt</th>Stück<th></th><th></th></tr>
+            <tr><td>#{uS.bestellung.getBestellposten(uS.produktId).getProdukt()}</td><td>#{uS.bestellung.getBestellposten(uS.produktId)}</td><td></td></tr>
+        </table>
+        <tr><td><h:outputText value="Anzahl ändern: "/></td><td><h:inputText value=""/></td><td><h:commandButton class="button" value="ändern"/></td></tr>
+
+    </h:form>
+</h:body>
+
+</html>
