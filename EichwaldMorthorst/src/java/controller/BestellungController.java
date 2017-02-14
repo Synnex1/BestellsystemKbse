@@ -13,7 +13,7 @@ import javax.inject.Singleton;
  * Der BestellungsController besitzt eine Liste aller in der Datenbank vorhandenen Bestellungen und verwaltet diese.
  * Er ist als Singleton umgesetzt, um somit eine zentrale Zugriffsstelle fuer Bestellungen zu bieten.
  *
- * @author Mike
+ * @author Mike Morthorst
  */
 @Singleton
 public class BestellungController {
@@ -171,15 +171,19 @@ public class BestellungController {
     }
     
     /**
-     * Löscht einen Bestellposten aus einer Bestellung
+     * Löscht einen Bestellposten aus einer Bestellung und addiert die Bestellmenge dem Bestand hinzu.
      *
      * @param bestellung_id Id der Bestellung aus der ein Bestellposten geloescht werden soll
      * @param bestellposten_id Id des Bestellpostens, welcher geloescht werden soll
-     * @return 
+     * @return Die Bestellung die veraendert wurde. Ansonsten Null.
      */
     public Bestellung deleteBestellposten(Long bestellung_id, Long bestellposten_id) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
+                Bestellposten bp = b.getBestellposten(bestellposten_id);
+                int neuerBestand = bp.getAnzahl() + bp.getProdukt().getAnzahl();
+                pc.updateProduktCount(bp.getProdukt().getId(), neuerBestand);
+                
                 ps.removeBestellposten(bestellposten_id);
                 b.deleteBestellposten(bestellung_id);
                 return b;

@@ -75,6 +75,7 @@ public class Bestellung implements Serializable {
         for(Bestellposten bp : bestellposten){
             if(bp.getId().compareTo(id) == 0){
                 this.bestellposten.remove(bp);
+                
             }
         }
     }
