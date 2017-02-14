@@ -64,6 +64,7 @@ public class ProduktController{
             }
         }
     }
+
    /* 
     public Produkt checkProduktCountConstraint(Long produkt_id, int buy_count) {
         for(Produkt p : this.produkte) {
@@ -74,3 +75,4 @@ public class ProduktController{
     }
 */
 }
+

@@ -82,4 +82,8 @@ public class ViewModelBestellung implements Serializable {
         bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl);
     }
     
+    public void bestellPostenBearbeiten(Long bestellId, Long bestellPostenId, int anzahl){
+        
+    }
+    
 }
