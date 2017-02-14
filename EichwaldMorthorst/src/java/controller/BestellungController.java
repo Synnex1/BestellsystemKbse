@@ -9,6 +9,11 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * Der BestellungsController 
+ *
+ * @author Mike
+ */
 @Singleton
 public class BestellungController {
     @Inject
@@ -18,6 +23,9 @@ public class BestellungController {
     private List<Bestellung> bestellungen;
     private Bestellung bestellung;
     
+    /**
+     *
+     */
     @PostConstruct
     public void init() {
         this.bestellung = new Bestellung();
@@ -28,10 +36,19 @@ public class BestellungController {
         return ps.findAllBestellung();
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Bestellung> getAllBestellung() {
         return this.bestellungen;
     }
     
+    /**
+     *
+     * @param kunde
+     * @return
+     */
     public Bestellung newBestellung(String kunde) {
         this.bestellung.setKunde(kunde);
         try {
@@ -47,6 +64,13 @@ public class BestellungController {
         return b;
     }
     
+    /**
+     *
+     * @param bestellung_id
+     * @param produkt_id
+     * @param anzahl
+     * @return
+     */
     public Bestellung addBestellpostenToBestellung(Long bestellung_id, Long produkt_id, int anzahl) {
         Produkt p = pc.checkProduktCountConstraint(produkt_id, anzahl);
         if(p == null) {
@@ -65,6 +89,12 @@ public class BestellungController {
         return null;
     }
     
+    /**
+     *
+     * @param bestellung_id
+     * @param kunde
+     * @return
+     */
     public Bestellung updateBestellung(Long bestellung_id, String kunde) {
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
@@ -76,6 +106,13 @@ public class BestellungController {
         return null;
     }
     
+    /**
+     *
+     * @param bestellung_id
+     * @param bestellposten_id
+     * @param neueAnzahl
+     * @return
+     */
     public Bestellung updateBestellposten(Long bestellung_id, Long bestellposten_id, int neueAnzahl) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
@@ -94,6 +131,23 @@ public class BestellungController {
                         return b;
                     }
                 }
+            }
+        }
+        return null;
+    }
+    
+    /**
+     *
+     * @param bestellung_id
+     * @param bestellposten_id
+     * @return
+     */
+    public Bestellung deleteBestellposten(Long bestellung_id, Long bestellposten_id) {
+        for(Bestellung b : this.bestellungen) {
+            if(b.getId().compareTo(bestellung_id) == 0) {
+                b.deleteBestellposten(bestellposten_id);
+                ps.remove(b.getBestellposten(bestellposten_id));
+                return b;
             }
         }
         return null;
