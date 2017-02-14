@@ -18,7 +18,10 @@
             <tr><th>Produkt</th>Stück<th></th><th></th></tr>
             <tr><td>#{uS.bestellung.getBestellposten(uS.produktId).getProdukt()}</td><td>#{uS.bestellung.getBestellposten(uS.produktId)}</td><td></td></tr>
         </table>
-        <tr><td><h:outputText value="Anzahl ändern: "/></td><td><h:inputText value=""/></td><td><h:commandButton class="button" value="ändern"/></td></tr>
+        <tr><td><h:outputText value="Anzahl ändern: "/></td>
+            <td><h:inputText value=""/></td>
+            <td><h:commandButton class="button" value="Ändern" action="/View/bestellung.xhtml" onclick="#{vmBestellung.bestellPostenBearbeiten(uS.bestellung.id, b.id, b.anzahl)}"/></td>
+        </tr>
 
     </h:form>
 </h:body>
