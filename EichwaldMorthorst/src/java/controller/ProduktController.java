@@ -60,7 +60,7 @@ public class ProduktController{
             if(p.getId() == produkt_id) {
                 p.setName(name);
                 p.setAnzahl(anzahl);
-                ps.persist(p);
+                ps.merge(p);
             }
         }
     }
