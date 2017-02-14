@@ -62,7 +62,7 @@
             </ui:repeat>
         </table><br/>
         <h:commandButton class="button" value="Bestellen"/>
-        <h:commandButton class="button" value="Abbrechen"/><br/>
+        <h:commandButton class="button" value="Abbrechen" action="#{vmBestellung.deleteBestellung(uS.bestellung.id)}"/><br/>
     </h:form>
 </h:body>
 

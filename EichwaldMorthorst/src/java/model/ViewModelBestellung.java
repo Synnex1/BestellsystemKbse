@@ -97,7 +97,6 @@ public class ViewModelBestellung implements Serializable {
         uS.setBestellKunde(null);
         uS.setProduktAnzahl(1);
         uS.setProduktId(null);
-        
     }
     
     public void setBestellPostenToEditId(Long bestellPostenId){
