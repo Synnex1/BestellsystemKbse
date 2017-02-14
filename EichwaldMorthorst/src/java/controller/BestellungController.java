@@ -49,6 +49,9 @@ public class BestellungController {
     
     public Bestellung addBestellpostenToBestellung(Long bestellung_id, Long produkt_id, int anzahl) {
         Produkt p = pc.checkProduktCountConstraint(produkt_id, anzahl);
+        if(p == null) {
+            return null;
+        }
         
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
@@ -68,6 +71,29 @@ public class BestellungController {
                 b.setKunde(kunde);
                 ps.merge(b);
                 return b;
+            }
+        }
+        return null;
+    }
+    
+    public Bestellung updateBestellposten(Long bestellung_id, Long bestellposten_id, int neueAnzahl) {
+        for(Bestellung b : this.bestellungen) {
+            if(b.getId().compareTo(bestellung_id) == 0) {
+                Bestellposten bp = b.getBestellposten(bestellposten_id);
+                if(bp.getAnzahl() > neueAnzahl) {
+                    int neuerBestand = bp.getProdukt().getAnzahl() + bp.getAnzahl() - neueAnzahl;
+                    pc.updateProduktCount(bp.getProdukt().getId(), neuerBestand);
+                    bp.setAnzahl(neueAnzahl);
+                    ps.merge(bp);
+                    return b;
+                } else if(bp.getAnzahl() < neueAnzahl) {
+                    int differenz = neueAnzahl - bp.getAnzahl();
+                    if(pc.checkProduktCountConstraint(bp.getProdukt().getId(), differenz) != null) {
+                        bp.setAnzahl(neueAnzahl);
+                        ps.merge(bp);
+                        return b;
+                    }
+                }
             }
         }
         return null;

@@ -64,6 +64,15 @@ public class ProduktController{
             }
         }
     }
+    
+    public void updateProduktCount(long produkt_id, int anzahl) {
+        for(Produkt p: this.produkte) {
+            if(p.getId().compareTo(produkt_id) == 0) {
+                p.setAnzahl(anzahl);
+                ps.merge(p);
+            }
+        }
+    }
 
     public Produkt checkProduktCountConstraint(Long produkt_id, int buy_count) {
         for(Produkt p : this.produkte) {
