@@ -28,7 +28,11 @@ public class Bestellung implements Serializable {
     private Long id;
     private String kunde;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Bestellposten> bestellposten = new ArrayList<>();
+    private List<Bestellposten> bestellposten;
+    
+    public Bestellung() {
+        this.bestellposten = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
@@ -64,9 +68,7 @@ public class Bestellung implements Serializable {
     }
     
     public void addBestellposten(Produkt p, int anzahl) {
-        Bestellposten b = new Bestellposten();
-        b.setProdukt(p);
-        b.setAnzahl(anzahl);
+        Bestellposten b = new Bestellposten(p, anzahl);
         this.bestellposten.add(b);
     }
     

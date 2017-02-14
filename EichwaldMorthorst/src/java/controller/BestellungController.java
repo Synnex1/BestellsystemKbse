@@ -16,9 +16,11 @@ public class BestellungController {
     @Inject
     private Persistence ps;
     private List<Bestellung> bestellungen;
+    private Bestellung bestellung;
     
     @PostConstruct
     public void init() {
+        this.bestellung = new Bestellung();
         this.bestellungen = allElements();
     }
     
@@ -31,10 +33,17 @@ public class BestellungController {
     }
     
     public Bestellung newBestellung(String kunde) {
-        Bestellung b = new Bestellung();
-        b.setKunde(kunde);
-        ps.persist(b);
-        this.bestellungen.add(b);
+        this.bestellung.setKunde(kunde);
+        try {
+            ps.persist(this.bestellung);
+            this.bestellungen.add(this.bestellung);
+        }catch (Exception e) {
+            System.err.println("Fehler bei Erstellung einer Bestellung");
+            this.bestellungen = allElements();
+        }
+        
+        Bestellung b = this.bestellung;
+        this.bestellung = new Bestellung();
         return b;
     }
     
@@ -43,7 +52,7 @@ public class BestellungController {
         if(p.getAnzahl() < anzahl) {
             return null;
         }
-        this.bestellungen = allElements();
+        
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
                 b.addBestellposten(p, anzahl);

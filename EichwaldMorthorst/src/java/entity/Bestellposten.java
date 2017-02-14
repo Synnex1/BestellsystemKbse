@@ -21,6 +21,15 @@ public class Bestellposten implements Serializable {
     private Produkt produkt;
     private int anzahl;
     
+    public Bestellposten() {
+        
+    }
+    
+    public Bestellposten(Produkt p, int anzahl) {
+        this.produkt = p;
+        this.anzahl = anzahl;
+    }
+    
     public Long getId() {
         return id;
     }
