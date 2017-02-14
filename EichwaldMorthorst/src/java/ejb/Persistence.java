@@ -54,4 +54,9 @@ public class Persistence {
         Bestellposten b = em.find(Bestellposten.class, bestellposten_id);
         remove(b);
     }
+    
+    public void removeBestellung(long bestellung_id) {
+        Bestellung b = em.find(Bestellung.class, bestellung_id);
+        remove(b);
+    }
 }

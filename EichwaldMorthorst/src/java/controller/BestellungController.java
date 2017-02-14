@@ -72,8 +72,14 @@ public class BestellungController {
     public void deleteBestellung(Long bestellung_id) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                ps.merge(b);
-                ps.remove(b);
+                for(Bestellposten bp : b.getBestellposten()) {
+                    int neuerBestand = bp.getProdukt().getAnzahl() + bp.getAnzahl();
+                    pc.updateProduktCount(bp.getProdukt().getId(), neuerBestand);
+                }
+                
+                ps.removeBestellung(bestellung_id);
+                this.bestellungen = allElements();
+                break;
             }
         }
     }
