@@ -17,9 +17,7 @@
     <h:form>
         <h:outputLabel value="Kunde: "/><br/>
         <div class="#{(uS.hideInput) ? 'nothidden':'hidden'}">
-            <h:inputText value="#{uS.bestellKunde}" validatorMessage="Produktname darf keine Sonderzeichen enthalten">
-                <f:validateRegex pattern="([a-zA-Z\s]*)\w+"/>
-            </h:inputText>
+            <h:inputText value="#{uS.bestellKunde}"/>
             <h:commandButton value="Speichern" class="button" onclick="submit">
                 <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
                 <f:actionListener binding="#{uS.hideInputFalse()}"/>
@@ -50,14 +48,14 @@
     <h:form class="#{(uS.hideList)?'hidden':'nothidden'}">
         <h:outputLabel value="Warenkorb"/>
         <table >
-            <tr> <th width="80%" >Produkt</th> <th>Stück</th> <th></th> <th></th> </tr><br/>
+            <tr> <th class="w80" >Produkt</th> <th>Stück</th> <th></th> <th></th> </tr><br/>
 
             <ui:repeat var="b" value="#{uS.bestellung.bestellposten}">    
-                <tr><td width="80%" >#{b.produkt.name}</td><td>#{b.anzahl}</td> 
-                    <td class="tdpadding"><h:commandButton class="editButton" action="/Views/bestellposten_bearbeiten.xhtml">
+                <tr><td class="w80"  >#{b.produkt.name}</td><td>#{b.anzahl}</td> 
+                    <td><h:commandButton class="editButton" action="/Views/bestellposten_bearbeiten.xhtml">
                             <f:actionListener binding="#{vmBestellung.setBestellPostenToEditId(b.id)}"/>
                                           </h:commandButton></td>
-                    <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.bestellPostenLoeschen(uS.bestellung.id, b.id)}">
+                    <td><h:commandButton class="deleteButton" action="#{vmBestellung.bestellPostenLoeschen(uS.bestellung.id, b.id)}">
                                           </h:commandButton>
                     </td>
                 </tr><br/>

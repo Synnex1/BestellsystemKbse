@@ -8,6 +8,7 @@ import javax.inject.Named;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 /**
  * Die User Session speichert wichtige Werte für die ganze Session. 
@@ -19,6 +20,7 @@ import javax.validation.constraints.Min;
 @SessionScoped
 public class UserSession implements Serializable{
     private Bestellung bestellung;
+    @Pattern(regexp="([a-zA-Z\\s]*)\\w+", message="Produktname darf nicht leer sein oder keine Sonderzeichen enthalten")
     private String  bestellKunde; 
     private Long bestellPostenId;
     private Long  produktId;

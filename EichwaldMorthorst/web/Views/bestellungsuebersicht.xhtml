@@ -15,16 +15,19 @@
     
     <h:form style="margin-top: 5%">
         <ui:repeat var="c" value="#{vmBestellung.allBestellungen}">
-            <tr>
-                <td><h:outputLabel value="#{c.kunde}" /></td>
-                <td class="tdpadding"><h:commandButton class="deleteButton" action="#{vmBestellung.deleteBestellung(c.id)}"/></td>
-            </tr>
+            
+            <h:outputLabel value="#{c.kunde}" />
+                
             <table class="padding">
                 <tr><th>Produkt</th><th>Anzahl</th></tr>
                 <ui:repeat var="d" value="#{c.bestellposten}">
                     <tr><td>#{d.produkt.name}</td><td>#{d.anzahl}</td></tr>
-                </ui:repeat>
+                </ui:repeat><br/>
+                <h:form>
+                    <h:commandButton class="deleteButton" action="#{vmBestellung.deleteBestellung(c.id)}"/>
+                </h:form>
             </table>
+            
         </ui:repeat>
     </h:form><br/><br/>
 </h:body>

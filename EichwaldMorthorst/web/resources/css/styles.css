@@ -65,21 +65,19 @@ table {
 
 .deleteButton {
     background: url(./deleteButton.png) no-repeat;
-    background-size: 100%;
+    background-position: right;
     border: none;
     height: 43px;
     width: 43px;
-    padding-left: 50%;
+    text-align: right;
 }
 
 .deleteButton:hover {
     background: url(./deleteButtonActive.png) no-repeat;
-    background-size: 100%;
 }
 
 .addButton {
     background: url(./addButton.png) no-repeat;
-    background-size: 100%;
     border: none;
     height: 43px;
     width: 43px;
@@ -92,10 +90,9 @@ table {
 
 .editButton {
     background: url(./notes.png) no-repeat;
-    background-size: 100%;
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 43px;
+    height: 43px;
     padding-left: 10px;
 }
 
@@ -170,9 +167,8 @@ label {
     font-family: 'grungerocker';
 }
 
-.tdpadding {
-    text-align: right;
-    padding: 0px 10px;
+.w80 {
+    width: 80%;
 }
 
 #erfolgreiche_bestellung {

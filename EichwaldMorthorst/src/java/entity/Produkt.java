@@ -103,7 +103,7 @@ public class Produkt implements Serializable {
 
     @Override
     public String toString() {
-        return  name + " (Auf Lager: " + anzahl +")";
+        return  name + " (Im Bestand: " + anzahl +")";
     }
     
 }

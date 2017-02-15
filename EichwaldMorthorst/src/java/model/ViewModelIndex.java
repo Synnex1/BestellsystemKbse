@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 /**
  * Die ViewModelIndex beschränkt sich ausschließlich auf die View index.xhtml und stellt alle Funktionalitäten für diese bereit.
@@ -21,6 +22,7 @@ import javax.validation.constraints.Min;
 @Named(value = "vmIndex")
 @RequestScoped
 public class ViewModelIndex implements Serializable {
+    @Pattern(regexp="([a-zA-Z\\s]*)\\w+", message="Produktname darf nicht leer sein oder keine Sonderzeichen enthalten")
     private String name;
     @Digits(integer=6, fraction=0)
     @Min(value=1, message="Der Wert muss größer als 1 sein!")
