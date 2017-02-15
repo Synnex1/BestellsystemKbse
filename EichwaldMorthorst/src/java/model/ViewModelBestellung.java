@@ -66,7 +66,7 @@ public class ViewModelBestellung implements Serializable {
      * @param produktId Long Id des Produkts, der dem Bestellposten zugeordnet wird
      * @param produktAnzahl int Anzahl der zu bestellenden Produkte
      */
-    public void zumWarenkorbZufuegen(Long bestellId, Long produktId, int produktAnzahl){
+    public void zumWarenkorbHinzufuegen(Long bestellId, Long produktId, int produktAnzahl){
         Bestellung b = bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl);
         if(b != null){
         uS.setBestellung(b);
@@ -141,16 +141,6 @@ public class ViewModelBestellung implements Serializable {
         uS.setBestellung(null);
         return "/Views/erfolgreiche_bestellung.xhtml";
         }
-    }
-    
-    /**
-     * Es wird die BestellpostenId in der UserSession gesetzt, um auf der 
-     * Bestellposten-Bearbeiten-Seite damit weiter zu arbeiten.
-     *
-     * @param bestellPostenId Long Id des zu bearbeitenden Bestellpostens
-     */
-    public void setBestellPostenToEditId(Long bestellPostenId){
-        uS.setBestellPostenId(bestellPostenId);
     }
     
     /**
