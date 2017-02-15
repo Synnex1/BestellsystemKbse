@@ -95,8 +95,21 @@ public class ViewModelBestellung implements Serializable {
      */
     public void bestellPostenLoeschen(Long bestellungId, Long bestellPostenId){
         Bestellung b = bc.deleteBestellposten(bestellungId, bestellPostenId);
-        if(b == null){}else{
+        if(b == null){
+            String s = "Bestellung ist Null!!!";
+            uS.setDeleteBestellung(s);
+        }else{
+            //String s = "Bestellung ist NICHT Null!!!";
+            //uS.setDeleteBestellung(s);
+            if(b.getBestellposten().size() == uS.getBestellung().getBestellposten().size()){
+                String mike = "Der Bestellposten wurde gelöscht! (Mike)";
+                uS.setDeleteBestellung(mike);
+            }
             uS.setBestellung(b);
+            if(uS.getBestellung() == null){
+                String a = "uS.Bestellung ist NULL";
+                uS.setDeleteBestellung(a);
+            }
         }
         
     }

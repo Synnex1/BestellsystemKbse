@@ -61,6 +61,7 @@
                 </tr><br/>
             </ui:repeat>
         </table><br/>
+        <h:outputText value="#{uS.deleteBestellung}"/>
         <h:commandButton class="button" value="Bestellen" action="#{vmBestellung.bestellen()}"/>
         <h:commandButton class="button" value="Abbrechen" action="#{vmBestellung.deleteBestellung(uS.bestellung.id)}"/><br/>
     </h:form>
