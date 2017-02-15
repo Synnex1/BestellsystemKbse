@@ -127,9 +127,10 @@ public class ViewModelBestellung implements Serializable {
      *
      * @return Weiterleitung zu einer "erfolgreiche Bestellung"-Seite
      */
-    public String bestellen(){
+    public String bestellen(Long bestellungId){
         if(uS.getBestellung().getBestellposten().isEmpty()){
-            return null;
+            deleteBestellung(bestellungId);
+            return "/Views/fehlgeschlagen_bestellung.xhtml";
         } else{
         uS.setBestellKunde(null);
         uS.setBestellPostenId(null);

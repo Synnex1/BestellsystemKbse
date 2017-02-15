@@ -180,6 +180,11 @@ label {
     color: #44b345;
 }
 
+#fehlgeschlagen_bestellung {
+    margin-top: 30%;
+    color: red;
+}
+
 .padding {
     margin-bottom: 100px;
 }

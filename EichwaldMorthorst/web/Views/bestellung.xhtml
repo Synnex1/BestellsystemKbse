@@ -61,7 +61,7 @@
                 </tr><br/>
             </ui:repeat>
         </table><br/>
-        <h:commandButton class="button" value="Bestellen" action="#{vmBestellung.bestellen()}"/>
+        <h:commandButton class="button" value="Bestellen" action="#{vmBestellung.bestellen(uS.bestellung.id)}"/>
         <h:commandButton class="button" value="Abbrechen" action="#{vmBestellung.deleteBestellung(uS.bestellung.id)}"/><br/>
     </h:form>
 </h:body>
