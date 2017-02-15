@@ -186,6 +186,7 @@ public class BestellungController {
                 
                 ps.removeBestellposten(bestellposten_id);
                 b.deleteBestellposten(bestellung_id);
+                ps.merge(b);
                 return b;
             }
         }
