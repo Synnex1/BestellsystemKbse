@@ -6,24 +6,24 @@
     <title>Bestellsystem</title>
 </h:head>
 <h:body>
-    <h:outputLabel class="ueberschrift">Bestellungsuebersicht</h:outputLabel><br/>
+    <h:outputLabel class="ueberschrift" value="Bestellungsuebersicht"/><br/>
     <h:form>
         <h:commandButton class="buttonNavigation" value="Produktübersicht" action="/index.xhtml"/>
         <h:commandButton class="buttonNavigation" value="Bestellung" action="/Views/bestellung.xhtml"/>
         <h:commandButton class="buttonNavigation" value="Bestellungsübersicht" action="/Views/bestellungsuebersicht.xhtml"/><br/><br/><br/>
     </h:form>
     
-    <h:form>
+    <h:form style="margin-top: 5%">
         <ui:repeat var="c" value="#{vmBestellung.allBestellungen}">
-            <h:outputLabel value="#{c.kunde}"/>
-            <table>
+            <h:outputLabel value="#{c.kunde}" />
+            <table class="padding">
                 <tr><th>Produkt</th><th>Anzahl</th></tr>
                 <ui:repeat var="d" value="#{c.bestellposten}">
                     <tr><td>#{d.produkt.name}</td><td>#{d.anzahl}</td></tr>
                 </ui:repeat>
             </table>
         </ui:repeat>
-    </h:form><br/>
+    </h:form><br/><br/>
 </h:body>
 
 </html>

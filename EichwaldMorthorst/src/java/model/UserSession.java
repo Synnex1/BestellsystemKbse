@@ -28,16 +28,7 @@ public class UserSession implements Serializable{
     private int produktAnzahl = 1;
     private boolean hideInput = true;
     private boolean hideList = true;
-    private String deleteBestellung;
-
-    public String getDeleteBestellung() {
-        return deleteBestellung;
-    }
-
-    public void setDeleteBestellung(String deleteBestellung) {
-        this.deleteBestellung = deleteBestellung;
-    }
-    
+ 
     /**
      *
      * @return Gibt eine Bestellung wieder
