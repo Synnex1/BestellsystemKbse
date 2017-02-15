@@ -12,11 +12,16 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
-
+/**
+ * Die ViewModelIndex beschränkt sich ausschließlich auf die View index.xhtml und stellt alle Funktionalitäten für diese bereit.
+ * Sie besitzt die Variablen String name und int anzahl die für die Entität Produkt beötigt werden.
+ * Außerdem wird der ProduktController injectet, um die Daten in die Datenbank zu schreiben.
+ *
+ * @author Andrej Eichwald
+ */
 @Named(value = "vmIndex")
 @RequestScoped
 public class ViewModelIndex implements Serializable {
-    private long id;
     @Size(min=2)
     private String name;
     @Digits(integer=6, fraction=0)
@@ -26,44 +31,70 @@ public class ViewModelIndex implements Serializable {
     @Inject
     ProduktController pc;
     
+    /**
+     * Standardkonstruktor
+     * 
+     */
     public ViewModelIndex(){
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
+    /**
+     * Gibt den Namen wider
+     * 
+     * @return den Namen des Produktes
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Der Name wird gesetzt
+     *
+     * 
+     * @param name der gesetzt wird
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gibt die Anzahl wieder
+     *
+     * @return die Anzahl des Produkts
+     */
     public int getAnzahl() {
         return anzahl;
     }
 
+    /**
+     * Die Anzahl wird gesetzt
+     *
+     * @param anzahl die gesetzt wird
+     */
     public void setAnzahl(int anzahl) {
         this.anzahl = anzahl;
     }
     
+    /**
+     * Ein neues Produkt wird mit dem übergebenen Namen und der Anzahl erstellt.
+     * Die Id wird erst in der Datenbank erzeugt und wieder zurückgegeben.
+     *  
+     * @param name
+     * @param anzahl
+     */
     public void newProdukt(String name, int anzahl){
         pc.newProdukt(name, anzahl);
         this.name="";
         this.anzahl=0;
     }
     
+    /**
+     * Gibt alle in der Datenbank vorhandenen Produkte wieder
+     * 
+     * @return Eine Liste von allen vorhandenen Produkten wird zurückgeliefert
+     */
     public List<Produkt> getAllProdukt(){
         return pc.getAllProdukt();
-    }
-    
-    public void setBack(){
     }
     
 }

@@ -6,24 +6,22 @@ import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 import entity.Bestellung;
 import java.util.List;
 
+/**
+ * Die ViewModelBestellung kümmert sich um alle Angelegenheiten des Bestellungsvorgangs und der Ausgabe aller Bestellungen
+ * Der BestellController wird benutzt, um Bestellungen und Bestellposten in die Datenbank zu schreiben.
+ * Der ProduktController wird benutzt, um Produkte in Bestellposten hinzuzufügen.
+ * Die UserSession wird benutzt, um wichtige Daten zwischenzulagern.
+ *
+ * @author Andrej Eichwald
+ */
 @Named(value = "vmBestellung")
 @RequestScoped
 public class ViewModelBestellung implements Serializable {
     
-    private long id;
-    @Size(min=2)
-    private String name;
-    @Digits(integer=6, fraction=0)
-    @Min(value=1, message="Der Wert muss größer als 1 sein!")
-    @Max(value=10000, message="Es dürfen nicht mehr als 10000 Artikel auf einmal verkauft werden")
-    private int anzahl =1;
+    
     @Inject
     BestellungController bc;
     @Inject
@@ -31,51 +29,41 @@ public class ViewModelBestellung implements Serializable {
     @Inject
     UserSession uS;
 
-    
-    
+    /**
+     * Standardkonstruktor
+     * 
+     */
     public ViewModelBestellung(){
     }
     
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAnzahl() {
-        return anzahl;
-    }
-
-    public void setAnzahl(int anzahl) {
-        this.anzahl = anzahl;
-    }
-    
+    /**
+     * Wird benötigt um auf die Änderungen des Dropdown-Menü zu reagieren.
+     * Sobald ein Produkt ausgewählt wird, wird der Wert neu gesetzt.
+     * 
+     */
     public void valueChanged(){
     }
     
-    public boolean checkIfExistEnough(long produktId, int anzahl){
-        if(pc.findProdukt(produktId) == null){
-            return false;
-        }else if(anzahl > pc.findProdukt(produktId).getAnzahl()){
-            return false;
-        }
-        return true;
-    }
-    
+    /**
+     * Es wird eine neue Bestellung angelegt mit dem übergebenen Namen des Kunden.
+     * Die Bestellung wird zurückgegeben und in der UserSession gespeichert.
+     *
+     * @param kunde String Kundename für die Bestellung
+     */
     public void newKunde(String kunde){
         uS.setBestellung(bc.newBestellung(kunde));
     }
     
+    /**
+     * Es wird für eine bestimmte Bestellung mit der übergebenen BestellungsId ein 
+     * neuer Bestellposten angelegt. Dieser bekommt ein bestimmtes Produkt mit der 
+     * übergebenen ProduktId. Außerdem wird noch die Anzahl der Produkte mit der 
+     * Produktanzahl angegeben.
+     *
+     * @param bestellId Long Id der Bestellung, der der Bestellposten zugeordnet wird
+     * @param produktId Long Id des Produkts, der dem Bestellposten zugeordnet wird
+     * @param produktAnzahl int Anzahl der zu bestellenden Produkte
+     */
     public void zumWarenkorbZufuegen(Long bestellId, Long produktId, int produktAnzahl){
         Bestellung b = bc.addBestellpostenToBestellung(bestellId,produktId,produktAnzahl);
         if(b != null){
@@ -83,15 +71,36 @@ public class ViewModelBestellung implements Serializable {
         }
     }
     
+    /**
+     * Es wird die Anzahl des Produkts eines bestehenden Bestellpostens geändert und 
+     * wieder in die Datenbank geschrieben.
+     *
+     * @param bestellungId Long Id der zu bearbeitenden Bestellung
+     * @param bestellPostenId Long Id des zu bearbeitenden Bestellpostens
+     * @param anzahl int neue Anzahl des Produkts im Bestellposten
+     */
     public void bestellPostenBearbeiten(Long bestellungId, Long bestellPostenId, int anzahl){
         uS.setBestellung(bc.updateBestellposten(bestellungId, bestellPostenId, anzahl));
         uS.setProduktAnzahl(1);
     }
     
+    /**
+     * Es wird ein bestimmter Bestellposten mit der übergebenen BestellId und 
+     * BestellpostenId aus der Datenbank gelöscht
+     *
+     * @param bestellungId Long Id der Bestellung aus der der Bestellposten gelöscht werden soll
+     * @param bestellPostenId Long Id des Bestellpostens, der gelöscht werden soll
+     */
     public void bestellPostenLoeschen(Long bestellungId, Long bestellPostenId){
         uS.setBestellung(bc.deleteBestellposten(bestellungId, bestellPostenId));
     }
     
+    /**
+     * Es wird eine bestimmte Bestellung mit der übergebenen BestellungsId gelöscht.
+     * Alle Parameter der UserSession werden zurückgesetzt.
+     *
+     * @param bestellungId Long Id der zu löschenden Bestellung
+     */
     public void deleteBestellung(Long bestellungId){
         bc.deleteBestellung(bestellungId);
         uS.setBestellung(null);
@@ -103,6 +112,14 @@ public class ViewModelBestellung implements Serializable {
         uS.setBestellKunde(null);
     }
     
+    /**
+     * Es wird die Bestellung ausgeführt. 
+     * Alle Parameter der UserSession werden zurückgesetzt.
+     * Der Benutzer wird auf eine Seite weitergeleitet, wo er über eine 
+     * erfolgreiche Bestellung informiert wird
+     *
+     * @return Weiterleitung zu einer "erfolgreiche Bestellung"-Seite
+     */
     public String bestellen(){
         if(uS.getBestellung().getBestellposten().isEmpty()){
             return null;
@@ -118,13 +135,23 @@ public class ViewModelBestellung implements Serializable {
         }
     }
     
+    /**
+     * Es wird die BestellpostenId in der UserSession gesetzt, um auf der 
+     * Bestellposten-Bearbeiten-Seite damit weiter zu arbeiten.
+     *
+     * @param bestellPostenId Long Id des zu bearbeitenden Bestellpostens
+     */
     public void setBestellPostenToEditId(Long bestellPostenId){
         uS.setBestellPostenId(bestellPostenId);
     }
     
+    /**
+     * Gibt eine Liste mit allen Bestellungen wieder, die sich in der Datenbank 
+     * befinden.
+     *
+     * @return Liste aller vorhandenen Bestellungen
+     */
     public List<Bestellung> getAllBestellungen(){
         return bc.getAllBestellung();
     }
-
-    
 }
