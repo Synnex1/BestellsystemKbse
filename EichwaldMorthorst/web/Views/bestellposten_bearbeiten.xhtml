@@ -10,7 +10,7 @@
     <h:form>
         <table style="margin-top: 15%">
             <tr><th>Produkt</th><th>Stück auf Lager</th><th></th></tr>
-            <tr><td>#{uS.bestellung.getBestellposten(uS.bestellPostenId).produkt.name}</td><td>#{uS.bestellung.getBestellposten(uS.bestellPostenId).produkt.anzahl}</td><td></td></tr>
+            <tr><td>#{uS.bestellung.getBestellpostenById(uS.bestellPostenId).produkt.name}</td><td>#{uS.bestellung.getBestellpostenById(uS.bestellPostenId).produkt.anzahl}</td><td></td></tr>
         </table><br/>
         <tr><td><h:outputLabel value="Anzahl in den Warenkorb legen: "/></td>
             <td><h:inputText  value="#{uS.produktAnzahl}"/></td>
