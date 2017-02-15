@@ -92,9 +92,18 @@ public class Bestellung implements Serializable {
      * @param id Id des Bestellpostens.
      * @return Der gefundene Bestellposten.
      */
-    public Bestellposten getBestellposten(Long id){
+    public Bestellposten getBestellpostenById(Long id){
         for(Bestellposten bp : bestellposten){
             if(bp.getId().compareTo(id) == 0){
+                return bp;
+            }
+        }
+        return null;
+    }
+    
+    public Bestellposten getBestellpostenByProduktName(String name) {
+        for(Bestellposten bp : bestellposten) {
+            if(bp.getProdukt().getName().equals(name)) {
                 return bp;
             }
         }

@@ -106,9 +106,15 @@ public class BestellungController {
         
         for(Bestellung b : bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                Bestellposten bp = new Bestellposten(p, anzahl, b);
-                ps.persist(bp);
-                b.addBestellposten(bp);
+                Bestellposten bp = b.getBestellpostenByProduktName(p.getName());
+                if(bp == null) {
+                    bp = new Bestellposten(p, anzahl, b);
+                    ps.persist(bp);
+                    b.addBestellposten(bp);
+                } else {
+                    bp.setAnzahl(bp.getAnzahl() + anzahl);
+                    ps.merge(bp);
+                }
                 ps.merge(b);
                 return b;
             }
@@ -150,7 +156,7 @@ public class BestellungController {
     public Bestellung updateBestellposten(Long bestellung_id, Long bestellposten_id, int neueAnzahl) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                Bestellposten bp = b.getBestellposten(bestellposten_id);
+                Bestellposten bp = b.getBestellpostenById(bestellposten_id);
                 if(bp.getAnzahl() > neueAnzahl) {
                     int neuerBestand = bp.getProdukt().getAnzahl() + bp.getAnzahl() - neueAnzahl;
                     pc.updateProduktCount(bp.getProdukt().getId(), neuerBestand);
@@ -180,7 +186,7 @@ public class BestellungController {
     public Bestellung deleteBestellposten(Long bestellung_id, Long bestellposten_id) {
         for(Bestellung b : this.bestellungen) {
             if(b.getId().compareTo(bestellung_id) == 0) {
-                Bestellposten bp = b.getBestellposten(bestellposten_id);
+                Bestellposten bp = b.getBestellpostenById(bestellposten_id);
                 int neuerBestand = bp.getAnzahl() + bp.getProdukt().getAnzahl();
                 pc.updateProduktCount(bp.getProdukt().getId(), neuerBestand);
                 
