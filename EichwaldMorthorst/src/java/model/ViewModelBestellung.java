@@ -8,6 +8,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import entity.Bestellung;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  * Die ViewModelBestellung kümmert sich um alle Angelegenheiten des Bestellungsvorgangs und der Ausgabe aller Bestellungen
@@ -92,8 +94,13 @@ public class ViewModelBestellung implements Serializable {
      * @param bestellPostenId Long Id des Bestellpostens, der gelöscht werden soll
      */
     public void bestellPostenLoeschen(Long bestellungId, Long bestellPostenId){
-        uS.setBestellung(bc.deleteBestellposten(bestellungId, bestellPostenId));
+        Bestellung b = bc.deleteBestellposten(bestellungId, bestellPostenId);
+        if(b == null){}else{
+            uS.setBestellung(b);
+        }
+        
     }
+    
     
     /**
      * Es wird eine bestimmte Bestellung mit der übergebenen BestellungsId gelöscht.
