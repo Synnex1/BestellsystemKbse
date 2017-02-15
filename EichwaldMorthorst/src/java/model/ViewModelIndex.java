@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
 /**
  * Die ViewModelIndex beschränkt sich ausschließlich auf die View index.xhtml und stellt alle Funktionalitäten für diese bereit.
@@ -22,7 +21,6 @@ import javax.validation.constraints.Size;
 @Named(value = "vmIndex")
 @RequestScoped
 public class ViewModelIndex implements Serializable {
-    @Size(min=2)
     private String name;
     @Digits(integer=6, fraction=0)
     @Min(value=1, message="Der Wert muss größer als 1 sein!")

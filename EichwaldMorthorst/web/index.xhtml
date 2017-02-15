@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:outputStylesheet name="css/styles.css"/>
     <title>Bestellsystem</title>
@@ -14,7 +15,9 @@
     </h:form>
     <h:form>
         <h:outputLabel value="Neues Produkt: " />
-        <h:inputText id="inProdName" value="#{vmIndex.name}" /><br/>
+        <h:inputText value="#{vmIndex.name}" required="true" validatorMessage="Produktname darf keine Sonderzeichen enthalten">
+            <f:validateRegex pattern="([a-zA-Z\s]*)\w+"/>
+        </h:inputText><br/>
         
         <h:outputLabel value="Anzahl: " />
         <h:inputText id="inProdAnzahl" value="#{vmIndex.anzahl}" /><br/>

@@ -17,7 +17,9 @@
     <h:form>
         <h:outputLabel value="Kunde: "/><br/>
         <div class="#{(uS.hideInput) ? 'nothidden':'hidden'}">
-            <h:inputText value="#{uS.bestellKunde}"  required="true" requiredMessage="Kunde muss angegeben werden" />
+            <h:inputText value="#{uS.bestellKunde}" validatorMessage="Produktname darf keine Sonderzeichen enthalten">
+                <f:validateRegex pattern="([a-zA-Z\s]*)\w+"/>
+            </h:inputText>
             <h:commandButton value="Speichern" class="button" onclick="submit">
                 <f:actionListener binding="#{vmBestellung.newKunde(uS.bestellKunde)}"/>
                 <f:actionListener binding="#{uS.hideInputFalse()}"/>
