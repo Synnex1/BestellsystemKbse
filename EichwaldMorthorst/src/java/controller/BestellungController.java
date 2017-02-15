@@ -185,7 +185,7 @@ public class BestellungController {
                 pc.updateProduktCount(bp.getProdukt().getId(), neuerBestand);
                 
                 ps.removeBestellposten(bestellposten_id);
-                b.deleteBestellposten(bestellung_id);
+                b.deleteBestellposten(bestellposten_id);
                 return b;
             }
         }
