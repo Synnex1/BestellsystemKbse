@@ -101,6 +101,12 @@ public class Bestellung implements Serializable {
         return null;
     }
     
+    /**
+     * Gibt den Bestellposten zurueck, welcher das Produkt mit dem uebergebenem Namen besitzt.
+     *
+     * @param name Bezeichnung des Produktes.
+     * @return Der Bestellposten, welcher das Produkt mit dem uebergebenem Namen besitzt.
+     */
     public Bestellposten getBestellpostenByProduktName(String name) {
         for(Bestellposten bp : bestellposten) {
             if(bp.getProdukt().getName().equals(name)) {
