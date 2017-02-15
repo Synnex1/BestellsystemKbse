@@ -62,10 +62,10 @@ public class ProduktController{
      *
      * @param produkt_id Id des zu loeschenden Produktes
      */
-    public void deleteProdukt(long produkt_id) {
+    public void deleteProdukt(Long produkt_id) {
         for(Iterator<Produkt> i = this.produkte.iterator(); i.hasNext(); ){
             Produkt p = i.next();
-            if(p.getId() == produkt_id) {
+            if(p.getId().compareTo(produkt_id) == 0) {
                 i.remove();
                 ps.remove(p);
             }
@@ -78,9 +78,9 @@ public class ProduktController{
      * @param produkt_id Id des zu suchenden Produktes
      * @return Das Produkt welches durch die uebergebene Id identifiziert wird. Ansonsten Null.
      */
-    public Produkt findProdukt(long produkt_id) {
+    public Produkt findProdukt(Long produkt_id) {
         for(Produkt p : this.produkte) {
-            if(p.getId() == produkt_id) {
+            if(p.getId().compareTo(produkt_id) == 0) {
                 return p;
             }
         }
@@ -94,9 +94,9 @@ public class ProduktController{
      * @param name Neuer Bezeichner des Produktes.
      * @param anzahl Neuer Bestand des Produktes.
      */
-    public void updateProdukt(long produkt_id, String name, int anzahl) {
+    public void updateProdukt(Long produkt_id, String name, int anzahl) {
         for(Produkt p : this.produkte) {
-            if(p.getId() == produkt_id) {
+            if(p.getId().compareTo(produkt_id) == 0) {
                 p.setName(name);
                 p.setAnzahl(anzahl);
                 ps.merge(p);
@@ -110,7 +110,7 @@ public class ProduktController{
      * @param produkt_id Id des Produktes, welches veraendert werden soll.
      * @param anzahl Neuer Bestand des Produktes.
      */
-    public void updateProduktCount(long produkt_id, int anzahl) {
+    public void updateProduktCount(Long produkt_id, int anzahl) {
         for(Produkt p: this.produkte) {
             if(p.getId().compareTo(produkt_id) == 0) {
                 p.setAnzahl(anzahl);

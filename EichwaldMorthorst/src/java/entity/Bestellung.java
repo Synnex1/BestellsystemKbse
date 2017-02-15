@@ -3,6 +3,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -124,10 +125,10 @@ public class Bestellung implements Serializable {
      * @param bestellposten_id Id des zu loeschenden Bestellpostens.
      */
     public void deleteBestellposten(Long bestellposten_id){
-        for(Bestellposten bp : bestellposten){
-            if(bp.getId().compareTo(id) == 0){
-                this.bestellposten.remove(bp);
-                
+        for(Iterator<Bestellposten> it = this.bestellposten.iterator(); it.hasNext(); ){
+            Bestellposten b = it.next();
+            if(b.getId().compareTo(bestellposten_id) == 0) {
+                it.remove();
             }
         }
     }
